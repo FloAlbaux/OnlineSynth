@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Online Synth</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<h1>Online Synth</h1>
+
+<div class="container">
+
+  <div class = "channel1"> 
+    <h2>Channel1</h2>
+    <div class = "osc1">
+      <button class="sin1"></button>
+      <button class="carre1"></button>
+      <button class="triangle1"></button>
+    </div>
+    <div class = "play1">
+      <button class="bpplay1"></button>
+      <input type="range" min="0" max="75" value="0" class="slider" id="reverb1">
+    </div>
+    <div class = "delay1">
+      <input type="range" min="0" max="75" value="0" class="slider" id="delay1">
+    </div>
+    <div class = "ping1">
+      <input type="range" min="0" max="75" value="0" class="slider" id="ping1">
+    </div>
+  </div>
+
+  <div class = "channel2"> 
+    <h2>Channel2</h2>
+    <div class = "osc2">
+      <button class="sin2"></button>
+      <button class="carre2"></button>
+      <button class="triangle2"></button>
+    </div>
+    <div class = "play2">
+      <button class="bpplay2"></button>
+      <input type="range" min="0" max="75" value="0" class="slider" id="reverb2">
+    </div>
+    <div class = "delay2">
+      <input type="range" min="0" max="75" value="0" class="slider" id="delay2">
+    </div>
+    <div class = "ping2">
+      <input type="range" min="0" max="75" value="0" class="slider" id="ping2">
+    </div>
+  </div>
+
+  <div class = "drum"> 
+    <h2>Drum</h2>
+  </div>
+
+  <div class = "info"> 
+    Info
+  </div>
+
+  <div class = "channelConf"> 
+    ChannelConf
+  </div>
+</div>
+
+<script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+<script language="javascript" src="libraries/p5.dom.js"></script>
+<script language="javascript" src="libraries/p5.sound.js"></script>
+<script language="javascript" type="text/javascript" src="sketch.js"></script>
+
+</body>
+</html>
