@@ -14,12 +14,12 @@
   <div class = "channel1"> 
     <h2>Channel1</h2>
     <div class = "osc1">
-      <button class="sin1"></button>
-      <button class="carre1"></button>
-      <button class="triangle1"></button>
+      <button class="sin1">SIN</button>
+      <button class="carre1">CARRE</button>
+      <button class="triangle1">TRIANGLE</button>
     </div>
     <div class = "play1">
-      <button class="bpplay1"></button>
+      <button class="bpplay1">play</button>
       <input type="range" min="0" max="75" value="0" class="slider" id="reverb1">
     </div>
     <div class = "delay1">
@@ -28,17 +28,41 @@
     <div class = "ping1">
       <input type="range" min="0" max="75" value="0" class="slider" id="ping1">
     </div>
+    <div class = "LPF1">
+      <input type="range" min="0" max="75" value="0" class="slider" id="LPF1">
+    </div>
+    <div class = "pan1">
+      <input type="range" min="0" max="75" value="0" class="slider" id="pan1">
+    </div>
+    <div id="EQ">
+     <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">
+      </div>
+      <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">  
+      </div>
+      <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">   
+      </div>
+    </div>
+    <div class = "sett">
+      <button class="solo">S</button>
+      <button class="mute">M</button>
+    </div>
+    <div class = "midi">
+      <button class="midi">MIDI</button>
+    </div>
   </div>
 
   <div class = "channel2"> 
     <h2>Channel2</h2>
     <div class = "osc2">
-      <button class="sin2"></button>
-      <button class="carre2"></button>
-      <button class="triangle2"></button>
+      <button class="sin2">SIN</button>
+      <button class="carre2">CARRE</button>
+      <button class="triangle2">TRIANGLE</button>
     </div>
     <div class = "play2">
-      <button class="bpplay2"></button>
+      <button class="bpplay2">play</button>
       <input type="range" min="0" max="75" value="0" class="slider" id="reverb2">
     </div>
     <div class = "delay2">
@@ -47,10 +71,70 @@
     <div class = "ping2">
       <input type="range" min="0" max="75" value="0" class="slider" id="ping2">
     </div>
+    <div class = "LPF2">
+      <input type="range" min="0" max="75" value="0" class="slider" id="LPF2">
+    </div>
+    <div class = "pan2">
+      <input type="range" min="0" max="75" value="0" class="slider" id="pan2">
+    </div>
+    <div id="EQ">
+     <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">
+      </div>
+      <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">  
+      </div>
+      <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">   
+      </div>
+    </div>
+    <div class = "sett">
+      <button class="solo">S</button>
+      <button class="mute">M</button>
+    </div>
+    <div class = "midi">
+      <button class="midi">MIDI</button>
+    </div>
   </div>
 
   <div class = "drum"> 
     <h2>Drum</h2>
+     <div class = "sample">
+      <button class="sin2">1</button>
+      <button class="carre2">2</button>
+      <button class="triangle2">3</button>
+    </div>
+    <div class = "play">
+      <button class="bpplay">play</button>
+      <input type="range" min="0" max="75" value="0" class="slider" id="reverb3">
+    </div>
+    <div class = "delay">
+      <input type="range" min="0" max="75" value="0" class="slider" id="delay3">
+    </div>
+    <div class = "ping">
+      <input type="range" min="0" max="75" value="0" class="slider" id="ping2">
+    </div>
+    <div class = "LPF">
+      <input type="range" min="0" max="75" value="0" class="slider" id="LPF3">
+    </div>
+    <div class = "pan">
+      <input type="range" min="0" max="75" value="0" class="slider" id="pan3">
+    </div>
+    <div id="EQ">
+     <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">
+      </div>
+      <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">  
+      </div>
+      <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">   
+      </div>
+    </div>
+    <div class = "sett">
+      <button class="solo">S</button>
+      <button class="mute">M</button>
+    </div>
   </div>
 
   <div class = "info"> 
@@ -58,7 +142,16 @@
   </div>
 
   <div class = "channelConf"> 
-    ChannelConf
+    <div class = "playM">
+      <button class="bpplayM">play</button>
+      <input type="range" min="0" max="75" value="0" class="slider" id="vol">
+    </div>
+    <div class = "record">
+      <button class="record">Record</button>
+    </div>
+    <div class = "Download">
+      <button class="dl">Download</button>
+    </div>
   </div>
 </div>
 
