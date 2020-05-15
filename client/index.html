@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Online Synth</title>
+  <link rel="stylesheet" href="/client/style.css" />
+</head>
+
+<body>
+<h1>Online Synth</h1>
+
+<div class="container">
+
+  <div class = "channel1"> 
+    <h2>Channel1</h2>
+    <div class = "osc1">
+      <button class="sin1">SIN</button>
+      <button class="carre1">CARRE</button>
+      <button class="triangle1">TRIANGLE</button>
+    </div>
+    <div class = "play1">
+      <button class="bpplay1">play</button>
+      <input type="range" min="0" max="75" value="0" class="slider" id="reverb1">
+    </div>
+    <div class = "delay1">
+      <input type="range" min="0" max="75" value="0" class="slider" id="delay1">
+    </div>
+    <div class = "ping1">
+      <input type="range" min="0" max="75" value="0" class="slider" id="ping1">
+    </div>
+    <div class = "LPF1">
+      <input type="range" min="0" max="75" value="0" class="slider" id="LPF1">
+    </div>
+    <div class = "pan1">
+      <input type="range" min="0" max="75" value="0" class="slider" id="pan1">
+    </div>
+    <div id="EQ">
+     <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">
+      </div>
+      <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">  
+      </div>
+      <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">   
+      </div>
+    </div>
+    <div class = "sett">
+      <button class="solo">S</button>
+      <button class="mute">M</button>
+    </div>
+    <div class = "midi">
+      <button class="midi">MIDI</button>
+    </div>
+  </div>
+
+  <div class = "channel2"> 
+    <h2>Channel2</h2>
+    <div class = "osc2">
+      <button class="sin2">SIN</button>
+      <button class="carre2">CARRE</button>
+      <button class="triangle2">TRIANGLE</button>
+    </div>
+    <div class = "play2">
+      <button class="bpplay2">play</button>
+      <input type="range" min="0" max="75" value="0" class="slider" id="reverb2">
+    </div>
+    <div class = "delay2">
+      <input type="range" min="0" max="75" value="0" class="slider" id="delay2">
+    </div>
+    <div class = "ping2">
+      <input type="range" min="0" max="75" value="0" class="slider" id="ping2">
+    </div>
+    <div class = "LPF2">
+      <input type="range" min="0" max="75" value="0" class="slider" id="LPF2">
+    </div>
+    <div class = "pan2">
+      <input type="range" min="0" max="75" value="0" class="slider" id="pan2">
+    </div>
+    <div id="EQ">
+     <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">
+      </div>
+      <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">  
+      </div>
+      <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">   
+      </div>
+    </div>
+    <div class = "sett">
+      <button class="solo">S</button>
+      <button class="mute">M</button>
+    </div>
+    <div class = "midi">
+      <button class="midi">MIDI</button>
+    </div>
+  </div>
+
+  <div class = "drum"> 
+    <h2>Drum</h2>
+     <div class = "sample">
+      <button class="sin2">1</button>
+      <button class="carre2">2</button>
+      <button class="triangle2">3</button>
+    </div>
+    <div class = "play">
+      <button class="bpplay">play</button>
+      <input type="range" min="0" max="75" value="0" class="slider" id="reverb3">
+    </div>
+    <div class = "delay">
+      <input type="range" min="0" max="75" value="0" class="slider" id="delay3">
+    </div>
+    <div class = "ping">
+      <input type="range" min="0" max="75" value="0" class="slider" id="ping2">
+    </div>
+    <div class = "LPF">
+      <input type="range" min="0" max="75" value="0" class="slider" id="LPF3">
+    </div>
+    <div class = "pan">
+      <input type="range" min="0" max="75" value="0" class="slider" id="pan3">
+    </div>
+    <div id="EQ">
+     <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">
+      </div>
+      <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">  
+      </div>
+      <div id = "col_vol">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">   
+      </div>
+    </div>
+    <div class = "sett">
+      <button class="solo">S</button>
+      <button class="mute">M</button>
+    </div>
+  </div>
+
+  <div class = "info"> 
+    Info
+  </div>
+
+  <div class = "channelConf"> 
+    <div class = "playM">
+      <button class="bpplayM">play</button>
+      <input type="range" min="0" max="75" value="0" class="slider" id="vol">
+    </div>
+    <div class = "record">
+      <button class="record">Record</button>
+    </div>
+    <div class = "Download">
+      <button class="dl">Download</button>
+    </div>
+
+  </div>
+</div>
+<div>
+<ul id="piano">
+  <li data-note="C4" class="key">
+    <div data-note="C#4" class="black-key">R</div>
+    D
+  </li>
+  <li data-note="D4" class="key">
+    <div data-note="D#4" class="black-key">T</div>
+    F
+  </li>
+  <li data-note="E4" class="key">
+    G
+  </li>
+  <li data-note="F4" class="key">
+    <div data-note="F#4" class="black-key">U</div>
+    H
+  </li>
+  <li data-note="G4" class="key">
+    <div data-note="G#4" class="black-key">I</div>
+    J
+  </li>
+  <li data-note="A4" class="key">
+    <div data-note="A#4" class="black-key">O</div>
+    K
+  </li>
+  <li data-note="B4" class="key">
+    L
+  </li>
+</ul>
+</div>
+
+<script>
+const synth = new Tone.Synth();
+synth.oscillator.type = "sine";
+synth.toMaster();
+
+const piano = document.getElementById("piano");
+
+piano.addEventListener("mousedown", e => {
+  synth.triggerAttack(e.target.dataset.note);
+});
+
+piano.addEventListener("mouseup", e => {
+  synth.triggerRelease();
+});
+
+document.addEventListener("keydown", e => {
+  switch (e.key) {
+    case "d":
+      return synth.triggerAttack("C4");
+    case "r":
+      return synth.triggerAttack("C#4");
+    case "f":
+      return synth.triggerAttack("D4");
+    case "t":
+      return synth.triggerAttack("D#4");
+    case "g":
+      return synth.triggerAttack("E4");
+    case "h":
+      return synth.triggerAttack("F4");
+    case "u":
+      return synth.triggerAttack("F#4");
+    case "j":
+      return synth.triggerAttack("G4");
+    case "i":
+      return synth.triggerAttack("G#4");
+    case "k":
+      return synth.triggerAttack("A4");
+    case "o":
+      return synth.triggerAttack("A#4");
+    case "l":
+      return synth.triggerAttack("B4");
+    default:
+      return;
+  }
+});
+
+document.addEventListener("keyup", e => {
+  switch (e.key) {
+    case "d":
+    case "r":
+    case "f":
+    case "t":
+    case "g":
+    case "h":
+    case "u":
+    case "j":
+    case "i":
+    case "k":
+    case "o":
+    case "l":
+       synth.triggerRelease(); 
+  }
+});
+</script>
+</body>
+</html>
