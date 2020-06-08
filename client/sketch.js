@@ -6,25 +6,38 @@ var buttonLowDrum, buttonMidDrum, buttonFastDrum, buttonPlay3;
 
 var volume1, volume2;
 
+
 function setup() 
 {
+  //Initialize Tone.js synthetizer
+  if (Tone.context.state !== 'running') {
+    Tone.context.resume();
+  }
+  
   channel1 = new p5.Oscillator('sine');
   channel1.freq(440, 0.1);
   channel2 = new p5.Oscillator('sine');
   channel2.freq(440, 0.1);
   drum = loadSound("client/audio/midDrum.mp3");
-
+  
   synth1 = new Tone.Synth();
   synth1.oscillator.type = "sine";
   synth1.toMaster();
 
+  
   synth2 = new Tone.Synth();
   synth2.oscillator.type = "sine";
-  //synth2.toMaster();
+  synth2.toMaster();
 
+  
   var piano = document.getElementById("piano");
   piano.addEventListener("mousedown", e => {
   synth1.triggerAttack(e.target.dataset.note);
+  
+  //Avoid AudioContext issue
+  if (Tone.context.state !== 'running') {
+    Tone.context.resume();
+  }
   });
 
   piano.addEventListener("mouseup", e => {
@@ -39,35 +52,42 @@ function setup()
   buttonTriangle1 =  document.getElementById('triangle1');
   buttonSawtooth1 =  document.getElementById('sawtooth1');
   buttonPlay1     =  document.getElementById('btplay1');
+  buttonMute1	  =  document.getElementById('mute1');
 
   buttonSine1.addEventListener    ('click', change2Sine1);
   buttonSquare1.addEventListener  ('click', change2Square1);
   buttonTriangle1.addEventListener('click', change2Triangle1);
   buttonSawtooth1.addEventListener('click', change2Sawtooth1);
   buttonPlay1.addEventListener    ('click', playOscillator);
+  buttonMute1.addEventListener	  ('click', muteOsc1);	
 
   buttonSine2     =  document.getElementById('sine2');
   buttonSquare2   =  document.getElementById('square2');
   buttonTriangle2 =  document.getElementById('triangle2');
   buttonSawtooth2 =  document.getElementById('sawtooth2');
   buttonPlay2     =  document.getElementById('btplay2');
+  buttonMute2	  =  document.getElementById('mute2');
 
   buttonSine2.addEventListener    ('click', change2Sine2);
   buttonSquare2.addEventListener  ('click', change2Square2);
   buttonTriangle2.addEventListener('click', change2Triangle2);
   buttonSawtooth2.addEventListener('click', change2Sawtooth2);
   buttonPlay2.addEventListener    ('click', playOscillator);
+  buttonMute2.addEventListener	  ('click', muteOsc2);	
   
   buttonLowDrum   =  document.getElementById('btLD');
   buttonMidDrum   =  document.getElementById('btMD');
   buttonFastDrum  =  document.getElementById('btFD');
   buttonPlay3     =  document.getElementById('btplay3');
+  buttonMuteD	  =  document.getElementById('muteD');
+
   
   buttonLowDrum.addEventListener    ('click', change2LowDrum);
   buttonMidDrum.addEventListener  ('click', change2MidDrum);
   buttonFastDrum.addEventListener('click', change2FastDrum);
   buttonPlay3.addEventListener    ('click', playDrumSample);
-
+  buttonMuteD.addEventListener	  ('click', muteOscD);	
+  
   /**********************************************************/
   /**************************SLIDER**************************/
   /**********************************************************/
@@ -79,7 +99,6 @@ function setup()
 
 
 }
-
 function change2Sine1()
 {
   synth1.oscillator.type='sine';
@@ -96,7 +115,6 @@ function change2Sawtooth1()
 {
   synth1.oscillator.type='sawtooth';
 }
-
 function change2Sine2()
 {
   synth2.oscillator.type='sine';
@@ -113,7 +131,6 @@ function change2Sawtooth2()
 {
   synth2.oscillator.type='sawtooth';
 }
-
 function change2LowDrum()
 {
   drum.disconnect();
@@ -129,8 +146,6 @@ function change2FastDrum()
   drum.disconnect();
   drum=loadSound("client/audio/fastDrum.mp3");
 }
-
-
 function playOscillator() 
 {
   playChannel=!playChannel;
@@ -151,18 +166,6 @@ function playOscillator()
     }
 }
 
-function playOscillator2() 
-{
-  playChannel2=!playChannel2;
-  if (playChannel2)
-  {
-    channel2.amp(1, 0.1);
-    channel2.start();
-  }
-  else
-    channel2.amp(0, 0);
-}
-
 function playDrumSample()
 {
   playDrum=!playDrum;
@@ -176,7 +179,6 @@ function playDrumSample()
     drum.pause();
   }
 }
-
 document.addEventListener("keydown", e => {
   switch (e.key) {
     case "d":
@@ -207,7 +209,6 @@ document.addEventListener("keydown", e => {
       return;
   }
 });
-
 document.addEventListener("keyup", e => {
   switch (e.key) {
     case "d":
@@ -226,13 +227,13 @@ document.addEventListener("keyup", e => {
       synth2.triggerRelease();
   }
 });
-
 function changeVolume1()
 {
   volume1.addEventListener("input", function () 
   {
     {
-      synth1.volume.value=volume1.value;
+      synth1.volume.value=volume1.value - 20;
+	  
     }
   });
 }
@@ -241,7 +242,15 @@ function changeVolume2()
   volume2.addEventListener("input", function () 
   {
     {
-      synth2.volume.value=volume2.value;
+      synth2.volume.value=volume2.value - 20;
     }
   });
+}
+
+function muteOsc1()
+{
+}
+
+function muteOsc2()
+{
 }
