@@ -6,19 +6,36 @@ var buttonLowDrum, buttonMidDrum, buttonFastDrum, buttonPlay3;
 var p1=true, p2=true;
 var volume1, volume2;
 
+var volPan1, chorus1, distortion1, pingp1, vibrato1;
+var VolPan1, Chorus1, Distortion1, Pingp1, Vibrato1;
+
+var volPan2, chorus2, distortion2, pingp2, vibrato2;
+var VolPan2, Chorus2, Distortion2, Pingp2, Vibrato2;
+
 
 function setup() 
 {
   //Initialize Tone.js synthetizer
 
   drum = loadSound("client/audio/midDrum.mp3");
+
+  /****************************SYNTH 1****************************/
+  VolPan1     = new Tone.PanVol(0, 0)         
+  Chorus1     = new Tone.Chorus(0, 0, 0)//(4, 2.5, 0);   
+  Distortion1 = new Tone.Distortion(0)     
+  Distortion1.oversample= "4x"
+  Pingp1      = new Tone.PingPongDelay(-1,0)//("8n", 0) 
+  Vibrato1    = new Tone.Vibrato(0, 0);
+  synth1 = new Tone.Synth().chain(Vibrato1, VolPan1, Chorus1, Distortion1, Pingp1, Tone.Master)
   
-  synth1 = new Tone.Synth()
-  synth1.toMaster();
-  console.log(synth1);
-  
-  synth2 = new Tone.Synth();
-  synth2.toMaster();
+  /****************************SYNTH 2****************************/
+  VolPan2     = new Tone.PanVol(0, 0)         
+  Chorus2     = new Tone.Chorus(0, 0, 0)//(4, 2.5, 0);   
+  Distortion2 = new Tone.Distortion(0)     
+  Distortion2.oversample= "4x"
+  Pingp2      = new Tone.PingPongDelay(-1,0)//("8n", 0) 
+  Vibrato2    = new Tone.Vibrato(0, 0);
+  synth2 = new Tone.Synth().chain(Vibrato2, VolPan2, Chorus2, Distortion2, Pingp2, Tone.Master)
 
   
   var piano = document.getElementById("piano");
@@ -99,8 +116,12 @@ function setup()
   volume2 =  document.getElementById('svol2');
   volume2.addEventListener    ('mousedown' , changeVolume2);
 
-
+  vibrato1 =  document.getElementById('vibrato1');
+  vibrato1.addEventListener    ('mousedown' , changeVibrato1);
+  vibrato2 =  document.getElementById('vibrato2');
+  vibrato2.addEventListener    ('mousedown' , changeVibrato2);
 }
+
 function change2Sine1()
 {
   synth1.oscillator.type='sine';
@@ -224,6 +245,28 @@ function changeVolume2()
     }
   });
 }
+
+function changeVibrato1()
+{
+  vibrato1.addEventListener("input", function () 
+  {
+    {
+      Vibrato1.depth.value = 1
+      Vibrato1.frequency.value = vibrato1.value
+    }
+  });
+}
+function changeVibrato2()
+{
+  vibrato2.addEventListener("input", function () 
+  {
+    {
+      Vibrato2.depth.value = 1
+      Vibrato2.frequency.value = vibrato2.value
+    }
+  });
+}
+
 
 function muteOsc1()
 {
