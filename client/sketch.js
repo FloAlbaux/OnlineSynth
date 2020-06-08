@@ -1,4 +1,4 @@
-var channel1, playing, freq, amp;
+var amp;
 var which_synth=3, playDrum=false;
 var buttonSine1, buttonSquare1, buttonTriangle1, buttonSawtooth1, buttonPlay1;
 var buttonSine2, buttonSquare2, buttonTriangle2, buttonSawtooth2, buttonPlay2;
@@ -10,15 +10,15 @@ var volume1, volume2;
 function setup() 
 {
   //Initialize Tone.js synthetizer
-  
-  channel1 = new p5.Oscillator('sine');
-  channel1.freq(440, 0.1);
-  channel2 = new p5.Oscillator('sine');
-  channel2.freq(440, 0.1);
+
   drum = loadSound("client/audio/midDrum.mp3");
   
-  synth1 = new Tone.Synth();
-  synth1.oscillator.type = "sine";
+  synth1 = new Tone.PolySynth(6, Tone.Synth, {
+	oscillator : {
+		type : "sine"
+	}
+});
+  
   synth1.toMaster();
   
   synth2 = new Tone.Synth();
@@ -195,111 +195,22 @@ function playDrumSample()
 document.addEventListener("keydown", e => {
   switch (which_synth) {
 	  case 3 : //merge 2 synth
-	  switch (e.key) {
-		case "d":
-		  return synth1.triggerAttack("C4") & synth2.triggerAttack("C4");
-		case "r":
-		  return synth1.triggerAttack("C#4") & synth2.triggerAttack("C#4");
-		case "f":
-		  return synth1.triggerAttack("D4") & synth2.triggerAttack("D4");
-		case "t":
-		  return synth1.triggerAttack("D#4") & synth2.triggerAttack("D#4");
-		case "g":
-		  return synth1.triggerAttack("E4") & synth2.triggerAttack("E4");
-		case "h":
-		  return synth1.triggerAttack("F4") & synth2.triggerAttack("F4");
-		case "u":
-		  return synth1.triggerAttack("F#4") & synth2.triggerAttack("F#4");
-		case "j":
-		  return synth1.triggerAttack("G4") & synth2.triggerAttack("G4");
-		case "i":
-		  return synth1.triggerAttack("G#4") & synth2.triggerAttack("G#4");
-		case "k":
-		  return synth1.triggerAttack("A4") & synth2.triggerAttack("A4");
-		case "o":
-		  return synth1.triggerAttack("A#4") & synth2.triggerAttack("A#4");
-		case "l":
-		  return synth1.triggerAttack("B4") & synth2.triggerAttack("B4");
-		default:
-		  return;
-	  }break;
-	  case 1 : //synth 1
-		  switch (e.key) {
-		case "d":
-		  return synth1.triggerAttack("C4");
-		case "r":
-		  return synth1.triggerAttack("C#4");
-		case "f":
-		  return synth1.triggerAttack("D4");
-		case "t":
-		  return synth1.triggerAttack("D#4");
-		case "g":
-		  return synth1.triggerAttack("E4");
-		case "h":
-		  return synth1.triggerAttack("F4");
-		case "u":
-		  return synth1.triggerAttack("F#4");
-		case "j":
-		  return synth1.triggerAttack("G4");
-		case "i":
-		  return synth1.triggerAttack("G#4");
-		case "k":
-		  return synth1.triggerAttack("A4");
-		case "o":
-		  return synth1.triggerAttack("A#4");
-		case "l":
-		  return synth1.triggerAttack("B4");
-		default:
-		  return;
-	  }break;
+			synth1.triggerAttack(keyboard_to_note(e.key));
+			synth2.triggerAttack(keyboard_to_note(e.key));  
+	  break;
+	  case 1 : //synth 1		
+			synth1.triggerAttack(keyboard_to_note(e.key));
+	  break;
 	  case 2 : //synth 2
-		  switch (e.key) {
-		case "d":
-		  return synth2.triggerAttack("C4");
-		case "r":
-		  return synth2.triggerAttack("C#4");
-		case "f":
-		  return synth2.triggerAttack("D4");
-		case "t":
-		  return synth2.triggerAttack("D#4");
-		case "g":
-		  return synth2.triggerAttack("E4");
-		case "h":
-		  return synth2.triggerAttack("F4");
-		case "u":
-		  return synth2.triggerAttack("F#4");
-		case "j":
-		  return synth2.triggerAttack("G4");
-		case "i":
-		  return synth2.triggerAttack("G#4");
-		case "k":
-		  return synth2.triggerAttack("A4");
-		case "o":
-		  return synth2.triggerAttack("A#4");
-		case "l":
-		  return synth2.triggerAttack("B4");
-		default:
-		  return;
-	  }break;	  
+		  synth2.triggerAttack(keyboard_to_note(e.key)); 
+	  break;	
   }
 });
 document.addEventListener("keyup", e => {
-  switch (e.key) {
-    case "d":
-    case "r":
-    case "f":
-    case "t":
-    case "g":
-    case "h":
-    case "u":
-    case "j":
-    case "i":
-    case "k":
-    case "o":
-    case "l":
-      synth1.triggerRelease();
-      synth2.triggerRelease();
-  }
+
+      synth1.triggerRelease(keyboard_to_note(e.key));
+      synth2.triggerRelease(keyboard_to_note(e.key));
+  
 });
 function changeVolume1()
 {
@@ -327,4 +238,36 @@ function muteOsc1()
 
 function muteOsc2()
 {
+}
+
+function keyboard_to_note(keyboard)
+{
+	switch(keyboard) {
+		case "d":
+		  return  "C4";
+		case "r":
+		  return  "C#4";
+		case "f":
+		  return  "D4";
+		case "t":
+		  return  "D#4";
+		case "g":
+		  return  "E4";
+		case "h":
+		  return  "F4";
+		case "u":
+		  return  "F#4";
+		case "j":
+		  return  "G4";
+		case "i":
+		  return  "G#4";
+		case "k":
+		  return  "A4";
+		case "o":
+		  return  "A#4";
+		case "l":
+		  return  "B4";
+		default:
+		  return;
+	}
 }
