@@ -13,16 +13,11 @@ function setup()
 
   drum = loadSound("client/audio/midDrum.mp3");
   
-  synth1 = new Tone.PolySynth(6, Tone.Synth, {
-	oscillator : {
-		type : "sine"
-	}
-});
-  
+  synth1 = new Tone.Synth()
   synth1.toMaster();
+  console.log(synth1);
   
   synth2 = new Tone.Synth();
-  synth2.oscillator.type = "sine";
   synth2.toMaster();
 
   
@@ -207,10 +202,8 @@ document.addEventListener("keydown", e => {
   }
 });
 document.addEventListener("keyup", e => {
-
-      synth1.triggerRelease(keyboard_to_note(e.key));
-      synth2.triggerRelease(keyboard_to_note(e.key));
-  
+      synth1.triggerRelease();
+      synth2.triggerRelease(	);
 });
 function changeVolume1()
 {
