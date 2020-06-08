@@ -1,18 +1,15 @@
 var channel1, playing, freq, amp;
-var playChannel=true, playDrum=false;
+var which_synth=3, playDrum=false;
 var buttonSine1, buttonSquare1, buttonTriangle1, buttonSawtooth1, buttonPlay1;
 var buttonSine2, buttonSquare2, buttonTriangle2, buttonSawtooth2, buttonPlay2;
 var buttonLowDrum, buttonMidDrum, buttonFastDrum, buttonPlay3;
-
+var p1=true, p2=true;
 var volume1, volume2;
 
 
 function setup() 
 {
   //Initialize Tone.js synthetizer
-  if (Tone.context.state !== 'running') {
-    Tone.context.resume();
-  }
   
   channel1 = new p5.Oscillator('sine');
   channel1.freq(440, 0.1);
@@ -23,7 +20,6 @@ function setup()
   synth1 = new Tone.Synth();
   synth1.oscillator.type = "sine";
   synth1.toMaster();
-
   
   synth2 = new Tone.Synth();
   synth2.oscillator.type = "sine";
@@ -32,9 +28,16 @@ function setup()
   
   var piano = document.getElementById("piano");
   piano.addEventListener("mousedown", e => {
-  synth1.triggerAttack(e.target.dataset.note);
-  
-  //Avoid AudioContext issue
+  switch(which_synth) {
+	  case 1 : synth1.triggerAttack(e.target.dataset.note);
+			   break;
+	  case 2 : synth2.triggerAttack(e.target.dataset.note);
+			   break;
+	  case 3 : synth1.triggerAttack(e.target.dataset.note);
+			   synth2.triggerAttack(e.target.dataset.note);
+			   break;
+  }
+    //Avoid AudioContext issue
   if (Tone.context.state !== 'running') {
     Tone.context.resume();
   }
@@ -42,7 +45,8 @@ function setup()
 
   piano.addEventListener("mouseup", e => {
   synth1.triggerRelease();
-  });
+  synth2.triggerRelease();
+  });  
 
   /**********************************************************/
   /**************************BOUTON**************************/
@@ -58,7 +62,7 @@ function setup()
   buttonSquare1.addEventListener  ('click', change2Square1);
   buttonTriangle1.addEventListener('click', change2Triangle1);
   buttonSawtooth1.addEventListener('click', change2Sawtooth1);
-  buttonPlay1.addEventListener    ('click', playOscillator);
+  buttonPlay1.addEventListener    ('click', playOscillator1);
   buttonMute1.addEventListener	  ('click', muteOsc1);	
 
   buttonSine2     =  document.getElementById('sine2');
@@ -72,7 +76,7 @@ function setup()
   buttonSquare2.addEventListener  ('click', change2Square2);
   buttonTriangle2.addEventListener('click', change2Triangle2);
   buttonSawtooth2.addEventListener('click', change2Sawtooth2);
-  buttonPlay2.addEventListener    ('click', playOscillator);
+  buttonPlay2.addEventListener    ('click', playOscillator2);
   buttonMute2.addEventListener	  ('click', muteOsc2);	
   
   buttonLowDrum   =  document.getElementById('btLD');
@@ -86,7 +90,10 @@ function setup()
   buttonMidDrum.addEventListener  ('click', change2MidDrum);
   buttonFastDrum.addEventListener('click', change2FastDrum);
   buttonPlay3.addEventListener    ('click', playDrumSample);
-  buttonMuteD.addEventListener	  ('click', muteOscD);	
+  // buttonMuteD.addEventListener	  ('click', muteOscD);	
+  
+    buttonPlay1.style.backgroundColor = "green";
+  buttonPlay2.style.backgroundColor = "green";
   
   /**********************************************************/
   /**************************SLIDER**************************/
@@ -146,24 +153,30 @@ function change2FastDrum()
   drum.disconnect();
   drum=loadSound("client/audio/fastDrum.mp3");
 }
-function playOscillator() 
+function playOscillator1() 
 {
-  playChannel=!playChannel;
-  
-  if (playChannel)
-  {
-    synth2.disconnect();
-    synth1.toMaster();
-    buttonPlay1.style.backgroundColor = "green";
-    buttonPlay2.style.backgroundColor = "red";
-  }
-  else
-  {
-    synth1.disconnect();
-    synth2.toMaster();
-    buttonPlay2.style.backgroundColor = "green";
-    buttonPlay1.style.backgroundColor = "red";
-    }
+   p1=!p1;
+   if(p1) {
+	buttonPlay1.style.backgroundColor = "green";
+	which_synth = which_synth + 1;
+   }
+   else {
+	buttonPlay1.style.backgroundColor = "red";
+	which_synth = which_synth - 1;
+   }
+}
+
+function playOscillator2() 
+{
+   p2=!p2;
+   if(p2) {
+	buttonPlay2.style.backgroundColor = "green";
+	which_synth = which_synth + 2;
+   }
+   else {
+	buttonPlay2.style.backgroundColor = "red";
+	which_synth = which_synth - 2;
+   }
 }
 
 function playDrumSample()
@@ -180,33 +193,94 @@ function playDrumSample()
   }
 }
 document.addEventListener("keydown", e => {
-  switch (e.key) {
-    case "d":
-      return synth1.triggerAttack("C4") & synth2.triggerAttack("C4");
-    case "r":
-      return synth1.triggerAttack("C#4") & synth2.triggerAttack("C#4");
-    case "f":
-      return synth1.triggerAttack("D4") & synth2.triggerAttack("D4");
-    case "t":
-      return synth1.triggerAttack("D#4") & synth2.triggerAttack("D#4");
-    case "g":
-      return synth1.triggerAttack("E4") & synth2.triggerAttack("E4");
-    case "h":
-      return synth1.triggerAttack("F4") & synth2.triggerAttack("F4");
-    case "u":
-      return synth1.triggerAttack("F#4") & synth2.triggerAttack("F#4");
-    case "j":
-      return synth1.triggerAttack("G4") & synth2.triggerAttack("G4");
-    case "i":
-      return synth1.triggerAttack("G#4") & synth2.triggerAttack("G#4");
-    case "k":
-      return synth1.triggerAttack("A4") & synth2.triggerAttack("A4");
-    case "o":
-      return synth1.triggerAttack("A#4") & synth2.triggerAttack("A#4");
-    case "l":
-      return synth1.triggerAttack("B4") & synth2.triggerAttack("B4");
-    default:
-      return;
+  switch (which_synth) {
+	  case 3 : //merge 2 synth
+	  switch (e.key) {
+		case "d":
+		  return synth1.triggerAttack("C4") & synth2.triggerAttack("C4");
+		case "r":
+		  return synth1.triggerAttack("C#4") & synth2.triggerAttack("C#4");
+		case "f":
+		  return synth1.triggerAttack("D4") & synth2.triggerAttack("D4");
+		case "t":
+		  return synth1.triggerAttack("D#4") & synth2.triggerAttack("D#4");
+		case "g":
+		  return synth1.triggerAttack("E4") & synth2.triggerAttack("E4");
+		case "h":
+		  return synth1.triggerAttack("F4") & synth2.triggerAttack("F4");
+		case "u":
+		  return synth1.triggerAttack("F#4") & synth2.triggerAttack("F#4");
+		case "j":
+		  return synth1.triggerAttack("G4") & synth2.triggerAttack("G4");
+		case "i":
+		  return synth1.triggerAttack("G#4") & synth2.triggerAttack("G#4");
+		case "k":
+		  return synth1.triggerAttack("A4") & synth2.triggerAttack("A4");
+		case "o":
+		  return synth1.triggerAttack("A#4") & synth2.triggerAttack("A#4");
+		case "l":
+		  return synth1.triggerAttack("B4") & synth2.triggerAttack("B4");
+		default:
+		  return;
+	  }break;
+	  case 1 : //synth 1
+		  switch (e.key) {
+		case "d":
+		  return synth1.triggerAttack("C4");
+		case "r":
+		  return synth1.triggerAttack("C#4");
+		case "f":
+		  return synth1.triggerAttack("D4");
+		case "t":
+		  return synth1.triggerAttack("D#4");
+		case "g":
+		  return synth1.triggerAttack("E4");
+		case "h":
+		  return synth1.triggerAttack("F4");
+		case "u":
+		  return synth1.triggerAttack("F#4");
+		case "j":
+		  return synth1.triggerAttack("G4");
+		case "i":
+		  return synth1.triggerAttack("G#4");
+		case "k":
+		  return synth1.triggerAttack("A4");
+		case "o":
+		  return synth1.triggerAttack("A#4");
+		case "l":
+		  return synth1.triggerAttack("B4");
+		default:
+		  return;
+	  }break;
+	  case 2 : //synth 2
+		  switch (e.key) {
+		case "d":
+		  return synth2.triggerAttack("C4");
+		case "r":
+		  return synth2.triggerAttack("C#4");
+		case "f":
+		  return synth2.triggerAttack("D4");
+		case "t":
+		  return synth2.triggerAttack("D#4");
+		case "g":
+		  return synth2.triggerAttack("E4");
+		case "h":
+		  return synth2.triggerAttack("F4");
+		case "u":
+		  return synth2.triggerAttack("F#4");
+		case "j":
+		  return synth2.triggerAttack("G4");
+		case "i":
+		  return synth2.triggerAttack("G#4");
+		case "k":
+		  return synth2.triggerAttack("A4");
+		case "o":
+		  return synth2.triggerAttack("A#4");
+		case "l":
+		  return synth2.triggerAttack("B4");
+		default:
+		  return;
+	  }break;	  
   }
 });
 document.addEventListener("keyup", e => {
