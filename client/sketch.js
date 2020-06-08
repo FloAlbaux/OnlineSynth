@@ -260,6 +260,17 @@ function keyboard_to_note(keyboard)
 		  return  "A#4";
 		case "l":
 		  return  "B4";
+		case "w":
+		  return  "C5";
+		case "x":
+		  return  "D5";
+		case "c":
+		  return  "E5";
+		case "v":
+		  return  "F5";
+		case "b":
+		  return  "G5";
+		case "n":
 		default:
 		  return;
 	}
