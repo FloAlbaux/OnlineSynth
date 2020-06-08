@@ -119,13 +119,18 @@ function setup()
 
   vibrato1 =  document.getElementById('vibrato1');
   vibrato1.addEventListener    ('mousedown' , changeVibrato1);
-  vibrato2 =  document.getElementById('vibrato2');
-  vibrato2.addEventListener    ('mousedown' , changeVibrato2);
-
   chorus1 =  document.getElementById('chorus1');
   chorus1.addEventListener    ('mousedown' , changeChorus1);
+  distortion1 =  document.getElementById('distortion1');
+  distortion1.addEventListener    ('mousedown' , changeDistortion1);
+
+
+  vibrato2 =  document.getElementById('vibrato2');
+  vibrato2.addEventListener    ('mousedown' , changeVibrato2);
   chorus2 =  document.getElementById('chorus2');
   chorus2.addEventListener    ('mousedown' , changeChorus2);
+  distortion2 =  document.getElementById('distortion2');
+  distortion2.addEventListener    ('mousedown' , changeDistortion1);
 }
 
 function change2Sine1()
@@ -293,7 +298,24 @@ function changeChorus2()
   });
 }
 
-
+function changeDistortion1()
+{
+  distortion1.addEventListener("input", function () 
+  {
+    {      
+      Distortion1.distortion = distortion1.value/10
+    }
+  });
+}
+function changeDistortion2()
+{
+  distortion2.addEventListener("input", function () 
+  {
+    {      
+      Distortion2.distortion = distortion2.value/10
+    }
+  });
+}
 
 function muteOsc1()
 {
