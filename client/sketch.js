@@ -6,6 +6,7 @@ var buttonLowDrum, buttonMidDrum, buttonFastDrum, buttonPlay3;
 var p1=true, p2=true;
 var volume1, volume2;
 
+/*objet avec maj, var sans maj*/
 var volPan1, chorus1, distortion1, pingp1, vibrato1;
 var VolPan1, Chorus1, Distortion1, Pingp1, Vibrato1;
 
@@ -21,7 +22,7 @@ function setup()
 
   /****************************SYNTH 1****************************/
   VolPan1     = new Tone.PanVol(0, 0)         
-  Chorus1     = new Tone.Chorus(0, 0, 0)//(4, 2.5, 0);   
+  Chorus1     = new Tone.Chorus(4, 0, 1) 
   Distortion1 = new Tone.Distortion(0)     
   Distortion1.oversample= "4x"
   Pingp1      = new Tone.PingPongDelay(-1,0)//("8n", 0) 
@@ -30,11 +31,11 @@ function setup()
   
   /****************************SYNTH 2****************************/
   VolPan2     = new Tone.PanVol(0, 0)         
-  Chorus2     = new Tone.Chorus(0, 0, 0)//(4, 2.5, 0);   
+  Chorus2     = new Tone.Chorus(4, 0, 1)//(4, 2.5, 0);   
   Distortion2 = new Tone.Distortion(0)     
   Distortion2.oversample= "4x"
   Pingp2      = new Tone.PingPongDelay(-1,0)//("8n", 0) 
-  Vibrato2    = new Tone.Vibrato(0, 0);
+  Vibrato2    = new Tone.Vibrato(0, 1);
   synth2 = new Tone.Synth().chain(Vibrato2, VolPan2, Chorus2, Distortion2, Pingp2, Tone.Master)
 
   
@@ -120,6 +121,11 @@ function setup()
   vibrato1.addEventListener    ('mousedown' , changeVibrato1);
   vibrato2 =  document.getElementById('vibrato2');
   vibrato2.addEventListener    ('mousedown' , changeVibrato2);
+
+  chorus1 =  document.getElementById('chorus1');
+  chorus1.addEventListener    ('mousedown' , changeChorus1);
+  chorus2 =  document.getElementById('chorus2');
+  chorus2.addEventListener    ('mousedown' , changeChorus2);
 }
 
 function change2Sine1()
@@ -224,7 +230,7 @@ document.addEventListener("keydown", e => {
 });
 document.addEventListener("keyup", e => {
       synth1.triggerRelease();
-      synth2.triggerRelease(	);
+      synth2.triggerRelease();
 });
 function changeVolume1()
 {
@@ -232,7 +238,6 @@ function changeVolume1()
   {
     {
       synth1.volume.value=volume1.value - 20;
-	  
     }
   });
 }
@@ -252,7 +257,9 @@ function changeVibrato1()
   {
     {
       Vibrato1.depth.value = 1
-      Vibrato1.frequency.value = vibrato1.value
+      Vibrato1.frequency.value = vibrato1.value/100
+      if(vibrato1.value==0)
+        Vibrato1.depth.value = 0
     }
   });
 }
@@ -261,11 +268,31 @@ function changeVibrato2()
   vibrato2.addEventListener("input", function () 
   {
     {
-      Vibrato2.depth.value = 1
-      Vibrato2.frequency.value = vibrato2.value
+      Vibrato2.frequency.value = vibrato2.value/100
+      if(vibrato2.value==0)
+        Vibrato2.depth.value = 0
     }
   });
 }
+function changeChorus1()
+{
+  chorus1.addEventListener("input", function () 
+  {
+    {
+      Chorus1.delayTime=chorus1.value/10//new Intl.NumberFormat('de-DE').format(chorus1.value/100)
+    }
+  });
+}
+function changeChorus2()
+{
+  chorus2.addEventListener("input", function () 
+  {
+    {
+      Chorus2.delayTime=chorus2.value/10//new Intl.NumberFormat('de-DE').format(chorus1.value/100)
+    }
+  });
+}
+
 
 
 function muteOsc1()
