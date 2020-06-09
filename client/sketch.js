@@ -8,10 +8,10 @@ var volume1, volume2;
 
 /*objet avec maj, var sans maj*/
 var pan1, chorus1, distortion1, pingp1, vibrato1, eqlow1, eqmid1, eqhigt1;
-var Pan1, Chorus1, Distortion1, Pingp1, Vibrato1, EQ31;
+var Pan1, Chorus1, Distortion1, Pingp1, Vibrato1, EQ31, Vol1;
 
 var pan2, chorus2, distortion2, pingp2, vibrato2, eqlow2, eqmid2, eqhigt2;
-var Pan2, Chorus2, Distortion2, Pingp2, Vibrato2, EQ32;
+var Pan2, Chorus2, Distortion2, Pingp2, Vibrato2, EQ32, Vol2;
 
 var note;
 
@@ -21,6 +21,7 @@ function setup()
   drum = loadSound("client/audio/midDrum.mp3");
 
   /****************************SYNTH 1****************************/
+  Vol1        = new Tone.Volume(0);
   Pan1        = new Tone.Panner(0)       
   Chorus1     = new Tone.Chorus(4, 0, 1) 
   Distortion1 = new Tone.Distortion(0)     
@@ -28,7 +29,7 @@ function setup()
   Pingp1      = new Tone.PingPongDelay(0,0)//("8n", 0) 
   Vibrato1    = new Tone.Vibrato(0, 0);
   EQ31        = new Tone.EQ3()
-  synth1 = new Tone.PolySynth(4, Tone.Synth).chain(EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master)
+  synth1 = new Tone.PolySynth(4, Tone.Synth).chain(Vol1, EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master)
   //synth1.sync()
   /****************************SYNTH 2****************************/
   Pan2        = new Tone.Panner(0)         
@@ -38,7 +39,8 @@ function setup()
   Pingp2      = new Tone.PingPongDelay(0, 0, 0)//("8n", 0) 
   Vibrato2    = new Tone.Vibrato(0, 1);
   EQ32        = new Tone.EQ3()
-  synth2 = new Tone.PolySynth(4, Tone.Synth).chain(EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master)
+  Vol2        = new Tone.Volume(0);
+  synth2 = new Tone.PolySynth(4, Tone.Synth).chain(Vol2, EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master)
   //synth2.sync()
   var piano = document.getElementById("piano");
   piano.addEventListener("mousedown", e => {
@@ -155,35 +157,77 @@ function setup()
 
 function change2Sine1()
 {
-  synth1.oscillator.type='sine';
+  synth1.disconnect()
+  synth1 = new Tone.PolySynth(4, Tone.Synth, {
+    oscillator : {
+      type : "sine"
+    }
+  }).chain(Vol1, EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master);
+  
 }
 function change2Square1()
 {
-  synth1.oscillator.type='square';
+  synth1.disconnect()
+  synth1 = new Tone.PolySynth(4, Tone.Synth, {
+    oscillator : {
+      type : "square"
+    }
+  }).chain(Vol1, EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master);
+  
 }
 function change2Triangle1()
 {
-  synth1.oscillator.type='triangle';
+  synth1.disconnect()
+  synth1 = new Tone.PolySynth(4, Tone.Synth, {
+    oscillator : {
+      type : "triangle"
+    }
+  }).chain(Vol1, EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master);
 }
 function change2Sawtooth1()
 {
-  synth1.oscillator.type='sawtooth';
+  synth1.disconnect()
+  synth1 = new Tone.PolySynth(4, Tone.Synth, {
+    oscillator : {
+      type : "sawtooth"
+    }
+  }).chain(Vol1, EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master);
 }
 function change2Sine2()
 {
-  synth2.oscillator.type='sine';
+  synth2.disconnect()
+  synth2 = new Tone.PolySynth(4, Tone.Synth, {
+    oscillator : {
+      type : "sine"
+    }
+  }).chain(Vol2, EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master);
 }
 function change2Square2()
 {
-  synth2.oscillator.type='square';
+  synth2.disconnect()
+  synth2 = new Tone.PolySynth(4, Tone.Synth, {
+    oscillator : {
+      type : "square"
+    }
+  }).chain(Vol2, EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master);
 }
 function change2Triangle2()
 {
-  synth2.oscillator.type='triangle';
+  synth2.disconnect()
+  synth2 = new Tone.PolySynth(4, Tone.Synth, {
+    oscillator : {
+      type : "triangle"
+    }
+  }).chain(Vol2, EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master);
 }
 function change2Sawtooth2()
 {
-  synth2.oscillator.type='sawtooth';
+  synth2.disconnect()
+  synth2 = new Tone.PolySynth(4, Tone.Synth, {
+    oscillator : {
+      type : "sawtooth"
+    }
+  }).chain(Vol2, EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master);
 }
 function change2LowDrum()
 {
@@ -244,19 +288,19 @@ document.addEventListener("keydown", e => {
     case 3 : //merge 2 synth
       note = keyboard_to_note(e.key)
       console.log("")
-			synth1.triggerAttackRelease(note, "8n");
-			synth2.triggerAttackRelease(note, "8n");  
+			synth1.triggerAttackRelease(note, "4n");
+			synth2.triggerAttackRelease(note, "4n");  
 	  break;
     case 1 : //synth 1	
       //console.log("1")
       note = keyboard_to_note(e.key)
       console.log("")
-			synth1.triggerAttackRelease(note, "8n");
+			synth1.triggerAttackRelease(note, "4n");
 	  break;
 	  case 2 : //synth 2
     note = keyboard_to_note(e.key)
     console.log("")
-    synth2.triggerAttackRelease(note, "8n");
+    synth2.triggerAttackRelease(note, "4n");
 	  break;	
   }
 });
@@ -269,7 +313,7 @@ function changeVolume1()
   volume1.addEventListener("input", function () 
   {
     {
-      synth1.volume.value=volume1.value - 20;
+      Vol1.volume.value=volume1.value
     }
   });
 }
@@ -278,7 +322,7 @@ function changeVolume2()
   volume2.addEventListener("input", function () 
   {
     {
-      synth2.volume.value=volume2.value - 20;
+      Vol2.volume.value=volume2.value
     }
   });
 }
@@ -436,10 +480,12 @@ function changeEq2()
 
 function muteOsc1()
 {
+  Vol1.mute = !Vol1.mute
 }
 
 function muteOsc2()
 {
+  Vol2.mute = !Vol2.mute
 }
 
 function keyboard_to_note(keyboard)
