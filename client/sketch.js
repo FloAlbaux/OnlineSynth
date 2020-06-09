@@ -328,9 +328,13 @@ function changePingp1()
   pingp1.addEventListener("input", function () 
   {
     {  
-      if (pingp1.value==0)
-        Pingp1.delayTime = -1    
-      Pingp1.delayTime.value = pingp1.value + "hz" // hertz //+ "n"//pingp1.value/100
+      if (pingp1.value<1)
+      {
+        Pingp1.delayTime.value = 0
+        console.log(pingp1.value)
+      }
+      else
+        Pingp1.delayTime.value = (pingp1.value) + "hz" // hertz //+ "n"//pingp1.value/100
       //Pingp1.feedback = 1
     }
   });
@@ -339,10 +343,14 @@ function changePingp2()
 {
   pingp2.addEventListener("input", function () 
   {
-    {      
-      if (pingp2.value==0)
-        Pingp2.delayTime = -1
-      Pingp2.delayTime.value = pingp2.value + "hz" // hertz //+ "n"//pingp2.value/200    
+    {  
+      if (pingp2.value<1)
+      {
+        Pingp2.delayTime.value = 0
+      }
+      else
+        Pingp2.delayTime.value = (pingp2.value) + "hz" // hertz //+ "n"//pingp1.value/100
+      //Pingp1.feedback = 1
     }
   });
 }
