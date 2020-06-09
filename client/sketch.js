@@ -7,17 +7,16 @@ var p1=true, p2=true;
 var volume1, volume2;
 
 /*objet avec maj, var sans maj*/
-var pan1, chorus1, distortion1, pingp1, vibrato1;
-var Pan1, Chorus1, Distortion1, Pingp1, Vibrato1;
+var pan1, chorus1, distortion1, pingp1, vibrato1, eqlow1, eqmid1, eqhigt1;
+var Pan1, Chorus1, Distortion1, Pingp1, Vibrato1, EQ31;
 
-var pan2, chorus2, distortion2, pingp2, vibrato2;
-var Pan2, Chorus2, Distortion2, Pingp2, Vibrato2;
+var pan2, chorus2, distortion2, pingp2, vibrato2, eqlow2, eqmid2, eqhigt2;
+var Pan2, Chorus2, Distortion2, Pingp2, Vibrato2, EQ32;
 
 
 function setup() 
 {
   //Initialize Tone.js synthetizer
-
   drum = loadSound("client/audio/midDrum.mp3");
 
   /****************************SYNTH 1****************************/
@@ -27,7 +26,8 @@ function setup()
   Distortion1.oversample= "4x"
   Pingp1      = new Tone.PingPongDelay(0,0)//("8n", 0) 
   Vibrato1    = new Tone.Vibrato(0, 0);
-  synth1 = new Tone.Synth().chain(Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master)
+  EQ31        = new Tone.EQ3()
+  synth1 = new Tone.Synth().chain(EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master)
   
   /****************************SYNTH 2****************************/
   Pan2        = new Tone.Panner(0)         
@@ -36,7 +36,8 @@ function setup()
   Distortion2.oversample= "4x"
   Pingp2      = new Tone.PingPongDelay(0, 0, 0)//("8n", 0) 
   Vibrato2    = new Tone.Vibrato(0, 1);
-  synth2 = new Tone.Synth().chain(Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master)
+  EQ32        = new Tone.EQ3()
+  synth2 = new Tone.Synth().chain(EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master)
   
   var piano = document.getElementById("piano");
   piano.addEventListener("mousedown", e => {
@@ -126,7 +127,12 @@ function setup()
   pingp1.addEventListener    ('mousedown' , changePingp1);
   pan1 =  document.getElementById('pan1');
   pan1.addEventListener    ('mousedown' , changePan1);
-
+  eqlow1 =  document.getElementById('eqlow1');
+  eqlow1.addEventListener    ('mousedown' , changeEq1);
+  eqmid1 =  document.getElementById('eqmid1');
+  eqmid1.addEventListener    ('mousedown' , changeEq1);
+  eqhigt1 =  document.getElementById('eqhigh1');
+  eqhigt1.addEventListener    ('mousedown' , changeEq1);
 
   vibrato2 =  document.getElementById('vibrato2');
   vibrato2.addEventListener    ('mousedown' , changeVibrato2);
@@ -138,6 +144,12 @@ function setup()
   pingp2.addEventListener    ('mousedown' , changePingp2);
   pan2 =  document.getElementById('pan2');
   pan2.addEventListener    ('mousedown' , changePan2);
+  eqlow2 =  document.getElementById('eqlow1');
+  eqlow2.addEventListener    ('mousedown' , changeEq2);
+  eqmid2 =  document.getElementById('eqmid1');
+  eqmid2.addEventListener    ('mousedown' , changeEq2);
+  eqhigt2 =  document.getElementById('eqhigh1');
+  eqhigt2.addEventListener    ('mousedown' , changeEq2);
 }
 
 function change2Sine1()
@@ -331,7 +343,6 @@ function changePingp1()
       if (pingp1.value<1)
       {
         Pingp1.delayTime.value = 0
-        console.log(pingp1.value)
       }
       else
         Pingp1.delayTime.value = (pingp1.value) + "hz" // hertz //+ "n"//pingp1.value/100
@@ -359,7 +370,7 @@ function changePan1()
   pan1.addEventListener("input", function () 
   {
     {   
-      Pan1.pan.value = pan1.value/100// hertz //+ "n"//pingp2.value/200    
+      Pan1.pan.value = pan1.value/100       // hertz //+ "n"//pingp2.value/200    
     }
   });
 }
@@ -369,6 +380,48 @@ function changePan2()
   {
     {   
       Pan2.pan.value = pan2.value/100// hertz //+ "n"//pingp2.value/200    
+    }
+  });
+}
+function changeEq1()
+{
+  eqlow1.addEventListener("input", function () 
+  {
+    {   
+      EQ31.low.value = eqlow1.value    
+    }
+  });
+  eqmid1.addEventListener("input", function () 
+  {
+    {   
+      EQ31.mid.value = eqmid1.value
+    }
+  });
+  eqhigt1.addEventListener("input", function () 
+  {
+    {   
+      EQ31.high.value = eqhigt1.value 
+    }
+  });
+}
+function changeEq2()
+{
+  eqlow2.addEventListener("input", function () 
+  {
+    {   
+      EQ32.low.value = eqlow1.value    
+    }
+  });
+  eqmid2.addEventListener("input", function () 
+  {
+    {   
+      EQ32.mid.value = eqmid2.value
+    }
+  });
+  eqhigt2.addEventListener("input", function () 
+  {
+    {   
+      EQ32.high.value = eqhigt2.value 
     }
   });
 }
