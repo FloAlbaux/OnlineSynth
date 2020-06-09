@@ -13,6 +13,7 @@ var Pan1, Chorus1, Distortion1, Pingp1, Vibrato1, EQ31;
 var pan2, chorus2, distortion2, pingp2, vibrato2, eqlow2, eqmid2, eqhigt2;
 var Pan2, Chorus2, Distortion2, Pingp2, Vibrato2, EQ32;
 
+var note;
 
 function setup() 
 {
@@ -27,8 +28,8 @@ function setup()
   Pingp1      = new Tone.PingPongDelay(0,0)//("8n", 0) 
   Vibrato1    = new Tone.Vibrato(0, 0);
   EQ31        = new Tone.EQ3()
-  synth1 = new Tone.Synth().chain(EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master)
-  
+  synth1 = new Tone.PolySynth(4, Tone.Synth).chain(EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master)
+  //synth1.sync()
   /****************************SYNTH 2****************************/
   Pan2        = new Tone.Panner(0)         
   Chorus2     = new Tone.Chorus(0, 0, 1)//(4, 2.5, 0);   
@@ -37,17 +38,17 @@ function setup()
   Pingp2      = new Tone.PingPongDelay(0, 0, 0)//("8n", 0) 
   Vibrato2    = new Tone.Vibrato(0, 1);
   EQ32        = new Tone.EQ3()
-  synth2 = new Tone.Synth().chain(EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master)
-  
+  synth2 = new Tone.PolySynth(4, Tone.Synth).chain(EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master)
+  //synth2.sync()
   var piano = document.getElementById("piano");
   piano.addEventListener("mousedown", e => {
   switch(which_synth) {
-	  case 1 : synth1.triggerAttack(e.target.dataset.note);
+    case 1 : synth1.triggerRelease([e.target.dataset.note], "+2n");
+			  break;
+	  case 2 : synth2.triggerRelease(e.target.dataset.note, "+2n");
 			   break;
-	  case 2 : synth2.triggerAttack(e.target.dataset.note);
-			   break;
-	  case 3 : synth1.triggerAttack(e.target.dataset.note);
-			   synth2.triggerAttack(e.target.dataset.note);
+	  case 3 : synth1.triggerRelease([e.target.dataset.note], "+2n");
+			   synth2.triggerRelease([e.target.dataset.note], "+2n");
 			   break;
   }
     //Avoid AudioContext issue
@@ -240,15 +241,22 @@ function playDrumSample()
 }
 document.addEventListener("keydown", e => {
   switch (which_synth) {
-	  case 3 : //merge 2 synth
-			synth1.triggerAttack(keyboard_to_note(e.key));
-			synth2.triggerAttack(keyboard_to_note(e.key));  
+    case 3 : //merge 2 synth
+      note = keyboard_to_note(e.key)
+      console.log("")
+			synth1.triggerAttackRelease(note, "8n");
+			synth2.triggerAttackRelease(note, "8n");  
 	  break;
-	  case 1 : //synth 1		
-			synth1.triggerAttack(keyboard_to_note(e.key));
+    case 1 : //synth 1	
+      //console.log("1")
+      note = keyboard_to_note(e.key)
+      console.log("")
+			synth1.triggerAttackRelease(note, "8n");
 	  break;
 	  case 2 : //synth 2
-		  synth2.triggerAttack(keyboard_to_note(e.key)); 
+    note = keyboard_to_note(e.key)
+    console.log("")
+    synth2.triggerAttackRelease(note, "8n");
 	  break;	
   }
 });
