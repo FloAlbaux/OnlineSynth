@@ -67,13 +67,16 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + "/index.html");
 })
 
-// create the login get and post routes
+ // create the login get and post routes
 app.get('/login', (req, res) => {
   res.send(`You got the login page!\n`)
 })
 
+
 app.post('/login', (req, res, next) => {
+	console.log("res : " + res.values); 
   passport.authenticate('local', (err, user, info) => {
+	console.log("user : " + user.body);  
     if(info) {return res.send(info.message)}
     if (err) { return next(err); }
     if (!user) { return res.redirect('/login'); }
