@@ -491,30 +491,54 @@ function muteOsc2()
 function keyboard_to_note(keyboard)
 {
 	switch(keyboard) {
-		case "d":
+		case "a":
 		  return  "C4";
-		case "r":
+		case "é":
 		  return  "C#4";
-		case "f":
+		case "z":
 		  return  "D4";
-		case "t":
+		case "\"":
 		  return  "D#4";
-		case "g":
+		case "e":
 		  return  "E4";
-		case "h":
+		case "r":
 		  return  "F4";
-		case "u":
+		case "\(":
 		  return  "F#4";
-		case "j":
+		case "t":
 		  return  "G4";
-		case "i":
+		case "-":
 		  return  "G#4";
-		case "k":
+		case "y":
 		  return  "A4";
-		case "o":
+		case "è":
 		  return  "A#4";
-		case "l":
+		case "u":
 		  return  "B4";
+		case "w":
+		  return  "C5";
+		case "s":
+		  return  "C#5";
+		case "x":
+		  return  "D5";
+		case "d":
+		  return  "D#5";
+		case "c":
+		  return  "E5";
+		case "v":
+		  return  "F5";
+		case "g":
+		  return  "F#5";
+		case "b":
+		  return  "G5";
+		case "h":
+		  return  "G#5";
+		case "n":
+		  return  "A5";
+		case "j":
+		  return  "A#5";
+		case ",":
+		  return  "B5";
 		default:
 		  return;
 	}
