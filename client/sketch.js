@@ -25,16 +25,16 @@ function setup()
   Chorus1     = new Tone.Chorus(4, 0, 1) 
   Distortion1 = new Tone.Distortion(0)     
   Distortion1.oversample= "4x"
-  Pingp1      = new Tone.PingPongDelay(-1,0)//("8n", 0) 
+  Pingp1      = new Tone.PingPongDelay(0,0)//("8n", 0) 
   Vibrato1    = new Tone.Vibrato(0, 0);
   synth1 = new Tone.Synth().chain(Vibrato1, VolPan1, Chorus1, Distortion1, Pingp1, Tone.Master)
   
   /****************************SYNTH 2****************************/
   VolPan2     = new Tone.PanVol(0, 0)         
-  Chorus2     = new Tone.Chorus(4, 0, 1)//(4, 2.5, 0);   
+  Chorus2     = new Tone.Chorus(0, 0, 1)//(4, 2.5, 0);   
   Distortion2 = new Tone.Distortion(0)     
   Distortion2.oversample= "4x"
-  Pingp2      = new Tone.PingPongDelay(-1,0)//("8n", 0) 
+  Pingp2      = new Tone.PingPongDelay(0, 0, 0)//("8n", 0) 
   Vibrato2    = new Tone.Vibrato(0, 1);
   synth2 = new Tone.Synth().chain(Vibrato2, VolPan2, Chorus2, Distortion2, Pingp2, Tone.Master)
 
@@ -69,7 +69,7 @@ function setup()
   buttonTriangle1 =  document.getElementById('triangle1');
   buttonSawtooth1 =  document.getElementById('sawtooth1');
   buttonPlay1     =  document.getElementById('btplay1');
-  buttonMute1	  =  document.getElementById('mute1');
+  buttonMute1	    =  document.getElementById('mute1');
 
   buttonSine1.addEventListener    ('click', change2Sine1);
   buttonSquare1.addEventListener  ('click', change2Square1);
@@ -96,7 +96,7 @@ function setup()
   buttonMidDrum   =  document.getElementById('btMD');
   buttonFastDrum  =  document.getElementById('btFD');
   buttonPlay3     =  document.getElementById('btplay3');
-  buttonMuteD	  =  document.getElementById('muteD');
+  buttonMuteD	    =  document.getElementById('muteD');
 
   
   buttonLowDrum.addEventListener    ('click', change2LowDrum);
@@ -123,6 +123,8 @@ function setup()
   chorus1.addEventListener    ('mousedown' , changeChorus1);
   distortion1 =  document.getElementById('distortion1');
   distortion1.addEventListener    ('mousedown' , changeDistortion1);
+  pingp1 =  document.getElementById('pingp1');
+  pingp1.addEventListener    ('mousedown' , changePingp1);
 
 
   vibrato2 =  document.getElementById('vibrato2');
@@ -131,6 +133,8 @@ function setup()
   chorus2.addEventListener    ('mousedown' , changeChorus2);
   distortion2 =  document.getElementById('distortion2');
   distortion2.addEventListener    ('mousedown' , changeDistortion1);
+  pingp2 =  document.getElementById('pingp2');
+  pingp2.addEventListener    ('mousedown' , changePingp2);
 }
 
 function change2Sine1()
@@ -313,6 +317,29 @@ function changeDistortion2()
   {
     {      
       Distortion2.distortion = distortion2.value/10
+    }
+  });
+}
+function changePingp1()
+{
+  pingp1.addEventListener("input", function () 
+  {
+    {  
+      if (pingp1.value==0)
+        Pingp1.delayTime = -1    
+      Pingp1.delayTime.value = pingp1.value + "hz" // hertz //+ "n"//pingp1.value/100
+      //Pingp1.feedback = 1
+    }
+  });
+}
+function changePingp2()
+{
+  pingp2.addEventListener("input", function () 
+  {
+    {      
+      if (pingp2.value==0)
+        Pingp2.delayTime = -1
+      Pingp2.delayTime.value = pingp2.value + "hz" // hertz //+ "n"//pingp2.value/200    
     }
   });
 }
