@@ -72,7 +72,7 @@ function getMIDIMessage(midiMessage){
     notesOn.set(pitch, timestamp);
   }
   // Scroll to the bottom of this div.
-  outputIn.scrollTop = outputIn.scrollHeight;
+
 }
 //Get Input/Output Devices
 navigator.requestMIDIAccess( { sysex: true } ).then((access) =>{

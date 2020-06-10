@@ -479,7 +479,7 @@ function changeEq2()
   eqlow2.addEventListener("input", function () 
   {
     {   
-      EQ32.low.value = eqlow1.value    
+      EQ32.low.value = eqlow2.value    
     }
   });
   eqmid2.addEventListener("input", function () 
