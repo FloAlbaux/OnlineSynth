@@ -67,3 +67,11 @@
 {
      background-color: red;
 }
+
+#btplay2
+{
+  background-image: url("images/pause.jpg");
+  background-size: 100%;
+  width: 33%;
+  height: 100px;
+}

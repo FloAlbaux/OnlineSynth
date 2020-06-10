@@ -4,14 +4,18 @@ var buttonSine1, buttonSquare1, buttonTriangle1, buttonSawtooth1, buttonPlay1;
 var buttonSine2, buttonSquare2, buttonTriangle2, buttonSawtooth2, buttonPlay2;
 var buttonLowDrum, buttonMidDrum, buttonFastDrum, buttonPlay3;
 var p1=true, p2=true;
-var volume1, volume2;
+var volume3;
+var boolMute = true
 
 /*objet avec maj, var sans maj*/
-var pan1, chorus1, distortion1, pingp1, vibrato1, eqlow1, eqmid1, eqhigt1;
+var pan1, chorus1, distortion1, pingp1, vibrato1, eqlow1, eqmid1, eqhigt1, volume1;
 var Pan1, Chorus1, Distortion1, Pingp1, Vibrato1, EQ31, Vol1;
 
-var pan2, chorus2, distortion2, pingp2, vibrato2, eqlow2, eqmid2, eqhigt2;
+var pan2, chorus2, distortion2, pingp2, vibrato2, eqlow2, eqmid2, eqhigt2, volume2;
 var Pan2, Chorus2, Distortion2, Pingp2, Vibrato2, EQ32, Vol2;
+
+/*var pan3, chorus3, distortion3, pingp3, vibrato3, eqlow3, eqmid3, eqhigt3, volume3;
+var Pan3, Chorus3, Distortion3, Pingp3, Vibrato3, EQ33, Vol3;*/
 
 var note;
 
@@ -19,6 +23,7 @@ function setup()
 {
   //Initialize Tone.js synthetizer
   drum = loadSound("client/audio/midDrum.mp3");
+  //
 
   /****************************SYNTH 1****************************/
   Vol1        = new Tone.Volume(0);
@@ -45,13 +50,13 @@ function setup()
   var piano = document.getElementById("piano");
   piano.addEventListener("mousedown", e => {
   switch(which_synth) {
-    case 1 : synth1.triggerRelease([e.target.dataset.note], "+2n");
+    case 1 : synth1.triggerAttackRelease(e.target.dataset.note, "4n");// synth1.triggerRelease([e.target.dataset.note], "+2n");
 			  break;
-	  case 2 : synth2.triggerRelease(e.target.dataset.note, "+2n");
-			   break;
-	  case 3 : synth1.triggerRelease([e.target.dataset.note], "+2n");
-			   synth2.triggerRelease([e.target.dataset.note], "+2n");
-			   break;
+	  case 2 : synth2.triggerAttackRelease(e.target.dataset.note, "4n");
+			  break;
+	  case 3 : synth1.triggerAttackRelease(e.target.dataset.note, "4n");
+        synth2.triggerAttackRelease(e.target.dataset.note, "4n");
+			  break;
   }
     //Avoid AudioContext issue
   if (Tone.context.state !== 'running') {
@@ -59,6 +64,7 @@ function setup()
   }
   });
 
+ 
   piano.addEventListener("mouseup", e => {
   synth1.triggerRelease();
   synth2.triggerRelease();
@@ -106,7 +112,7 @@ function setup()
   buttonMidDrum.addEventListener  ('click', change2MidDrum);
   buttonFastDrum.addEventListener('click', change2FastDrum);
   buttonPlay3.addEventListener    ('click', playDrumSample);
-  // buttonMuteD.addEventListener	  ('click', muteOscD);	
+  buttonMuteD.addEventListener	  ('click', muteOscD);	
   
     buttonPlay1.style.backgroundColor = "green";
   buttonPlay2.style.backgroundColor = "green";
@@ -119,6 +125,9 @@ function setup()
 
   volume2 =  document.getElementById('svol2');
   volume2.addEventListener    ('mousedown' , changeVolume2);
+
+  volume3 =  document.getElementById('svol3');
+  volume3.addEventListener    ('mousedown' , changeVolume3);
 
   vibrato1 =  document.getElementById('vibrato1');
   vibrato1.addEventListener    ('mousedown' , changeVibrato1);
@@ -326,6 +335,15 @@ function changeVolume2()
     }
   });
 }
+function changeVolume3()
+{
+  volume3.addEventListener("input", function () 
+  {
+    {
+      drum.amp(volume3.value/100)
+    }
+  });
+}
 
 function changeVibrato1()
 {
@@ -482,10 +500,22 @@ function muteOsc1()
 {
   Vol1.mute = !Vol1.mute
 }
-
 function muteOsc2()
 {
   Vol2.mute = !Vol2.mute
+}
+
+function muteOscD()
+{
+  if (boolMute)
+  {
+    drum.amp(0)
+    boolMute=!boolMute
+  }
+  else{
+    drum.amp(volume3.value/100)
+    boolMute=!boolMute
+  }
 }
 
 function keyboard_to_note(keyboard)
