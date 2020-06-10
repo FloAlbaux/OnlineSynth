@@ -32,8 +32,8 @@
       <button id="sawtooth1">sawtooth</button>
     </div>
     <div class = "play">
-      <input type="button" class="btplay1">
-       <img class = "display1" src=image_pause.png alt "Une image de pause:)" height="10%" width="10%"/>
+      <input type="button" class="btplay1" id="btplay1">
+       <img class = "display1" src=image_pause.png alt="Une image de pause:)" height="10%" width="10%"/>
       <input type="range" min="0" max="50" value="25" class="slider" id="svol1">
        VOL
     </div>
@@ -59,15 +59,15 @@
     </div>
     <div id="EQ">
      <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqlow1">
         EQ
       </div>
       <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">  
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqmid1">  
         EQ
       </div>
       <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">   
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqhigh1">   
         EQ
       </div>
     </div>
@@ -89,8 +89,8 @@
       <button id="sawtooth2">sawtooth</button>
     </div>
     <div class = "play">
-      <input type="button" class="btplay2">
-     <img class = "display2" src=image_pause.png alt "Une image de pause:)" height="10%" width="10%"/>
+      <input type="button" class="btplay2" id="btplay2">
+     <img class = "display2" src=image_pause.png alt="Une image de pause:)" height="10%" width="10%"/>
       <input type="range" min="0" max="50" value="25" class="slider" id="svol2">
       VOL
     </div>
@@ -116,15 +116,15 @@
     </div>
     <div id="EQ">
      <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqlow2">
         EQ
       </div>
       <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS"> 
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqmid2"> 
         EQ 
       </div>
       <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS"> 
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqhigh2"> 
         EQ  
       </div>
     </div>
@@ -146,7 +146,7 @@
     </div>
     <div class = "play">
       <button id="btplay3">play</button>
-      <input type="range" min="0" max="75" value="0" class="slider" id="play3">
+      <input type="range" min="0" max="75" value="0" class="slider" id="svol3">
       VOL
     </div>
     <div class = "sett">
@@ -237,8 +237,8 @@
 <script language="javascript" src="client/libraries/p5.dom.js"></script>
 <script language="javascript" src="client/libraries/p5.sound.js"></script>
 <script language="javascript" type="text/javascript" src="client/sketch.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/webmidi"></script>
 <script language="javascript" type="text/javascript" src="client/DemoReaderMIDI.js"></script>
+
 </body>
 </html>
