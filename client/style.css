@@ -54,24 +54,149 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   justify-content: space-evenly;
 }
-
-.channel1
-{
+.slidecontainer {
+  width: 100%;
 }
 
-#btplay1
-{
-     background-color: green;
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 20px -2;
+  width: 60%;
 }
-#btplay2
-{
-     background-color: red;
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 50%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000;
+  background: linear-gradient(135deg, blue, red);
+  border-radius: 5px;
+  border: 1px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 17px;
+  width: 15px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: linear-gradient(135deg, blue, red);
+}
+input[type=range]::-moz-range-track {
+  width: 50%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000;
+  background: #3071A9;
+  border-radius: 5px;
+  border: 1px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #3071A9;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071A9;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px #000000;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 15px;
+  width: 15px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071A9;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #3071A9;
 }
 
-#btplay2
+
+
+
+.linear-gradient {
+  background:
+    linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+    linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+    linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+}
+
+.info
 {
-  background-image: url("images/pause.jpg");
-  background-size: 100%;
-  width: 33%;
-  height: 100px;
+  color:black;
+}
+.img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
+.channel
+{
+   color:black;
+}
+.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
+.h1
+{
+   text-align: center;
+   margin-top: 0px;
+   font-style: italic;
+}
+
+.btplay2
+{
+  backgroundsize: 100%;
+  width: 0%;
+  height: 0px;
+  opacity: 0;
+  align-items: flex-end;
+  position: absolute;
+  left: -2 px;
+}
+.btplay1
+{
+  backgroundsize: 100%;
+  width: 0%;
+  height: 0px;
+  opacity: 0;
+  align-items: flex-end;
+  position: absolute;
+     
+     left: -2 px;
 }

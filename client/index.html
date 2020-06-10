@@ -2,12 +2,25 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Online Synth</title>
-  <link rel="stylesheet" href="/client/style.css" />
-</head>
+   
 
+    <body 
+      style="background-color: white;">  
+</body>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+  
 <body>
-<h1>Online Synth</h1>
+   <head>
+  <style>
+    h1 { color: black; }
+  </style>
+</head>
+<body>
+
+   <h1><center>Online Synth</center></h1>
+   <IMG class="displayed" src="giphy.gif" alt="Une image de guitare:)" height="20%" width="20%"/>
+   <h1><center>Live Your best Music !</center></h1>
 
 <div class="container">
   <div class = "channel"> 
@@ -19,42 +32,47 @@
       <button id="sawtooth1">sawtooth</button>
     </div>
     <div class = "play">
-      <button id ="btplay1">play</button>
-      <input type="range" min="-39" max="39" value="0" class="slider" id="svol1">
-      vol
+      <input type="button" class="btplay1">
+       <img class = "display1" src=image_pause.png alt "Une image de pause:)" height="10%" width="10%"/>
+      <input type="range" min="0" max="50" value="25" class="slider" id="svol1">
+       VOL
     </div>
     <div class = "vibrato">
       <input type="range" min="0" max="800" value="0" class="slider" id="vibrato1">
-      vibro
+      VIB
     </div>
     <div class = "chorus">
       <input type="range" min="0" max="50" value="0" class="slider" id="chorus1">
-      chorus
+      CHORUS
     </div>
     <div class = "distortion">
       <input type="range" min="0" max="10" value="0" class="slider" id="distortion1">
-      disto
+      DIST
     </div>
     <div class = "pingp">
       <input type="range" min="0" max="20" value="0" class="slider" id="pingp1">
-      ping
+      PING
     </div>
     <div class = "pan">
       <input type="range" min="-100" max="100" value="0" class="slider" id="pan1">
-      pan
+      PAN
     </div>
     <div id="EQ">
      <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqlow1">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">
+        EQ
       </div>
       <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqmid1">  
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">  
+        EQ
       </div>
       <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqhigh1">   
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">   
+        EQ
       </div>
     </div>
     <div class = "sett">
+      <button class="solo">S</button>
       <button class="mute" id="mute1">M</button>
     </div>
     <div class = "midi">
@@ -71,36 +89,47 @@
       <button id="sawtooth2">sawtooth</button>
     </div>
     <div class = "play">
-      <button id="btplay2">play</button>
-      <input type="range" min="-39" max="40" value="0" class="slider" id="svol2">
+      <input type="button" class="btplay2">
+     <img class = "display2" src=image_pause.png alt "Une image de pause:)" height="10%" width="10%"/>
+      <input type="range" min="0" max="50" value="25" class="slider" id="svol2">
+      VOL
     </div>
     <div class = "vibrato">
       <input type="range" min="0" max="800" value="0" class="slider" id="vibrato2">
+      VIB
     </div>
     <div class = "chorus">
       <input type="range" min="0" max="50" value="0" class="slider" id="chorus2">
+      CHORUS
     </div>
     <div class = "distortion">
       <input type="range" min="0" max="10" value="0" class="slider" id="distortion2">
+      DIST
     </div>
     <div class = "pingp">
       <input type="range" min="0" max="20" value="0" class="slider" id="pingp2">
+      PING
     </div>
     <div class = "pan2">
       <input type="range" min="-100" max="100" value="0" class="slider" id="pan2">
+      PAN
     </div>
     <div id="EQ">
      <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqlow2">
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS">
+        EQ
       </div>
       <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqmid2">  
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS"> 
+        EQ 
       </div>
       <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqhigh2">   
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="EQS"> 
+        EQ  
       </div>
     </div>
     <div class = "sett">
+      <button class="solo">S</button>
       <button class="mute" id ="mute2">M</button>
     </div>
     <div class = "midi">
@@ -117,15 +146,18 @@
     </div>
     <div class = "play">
       <button id="btplay3">play</button>
-      <input type="range" min="0" max="100" value="50" class="slider" id="svol3">
+      <input type="range" min="0" max="75" value="0" class="slider" id="play3">
+      VOL
     </div>
     <div class = "sett">
+      <button class="solo">S</button>
       <button class="mute" id ="muteD">M</button>
     </div>
   </div>
 
   <div class = "info"> 
     Info
+
   </div>
 
   <div class = "channelConf"> 
@@ -145,56 +177,56 @@
 <div>
 <ul id="piano">
   <li data-note="C4" class="key">
-    <div data-note="C#4" class="black-key">é</div>
-    A
+    <div data-note="C#4" class="black-key">R</div>
+    D
   </li>
   <li data-note="D4" class="key">
-    <div data-note="D#4" class="black-key">"</div>
-    Z
+    <div data-note="D#4" class="black-key">T</div>
+    F
   </li>
   <li data-note="E4" class="key">
-    E
+    G
   </li>
   <li data-note="F4" class="key">
-    <div data-note="F#4" class="black-key">(</div>
-    R
+    <div data-note="F#4" class="black-key">U</div>
+    H
   </li>
   <li data-note="G4" class="key">
-    <div data-note="G#4" class="black-key">-</div>
-    T
+    <div data-note="G#4" class="black-key">I</div>
+    J
   </li>
   <li data-note="A4" class="key">
-    <div data-note="A#4" class="black-key">è</div>
-    Y
+    <div data-note="A#4" class="black-key">O</div>
+    K
   </li>
   <li data-note="B4" class="key">
-    U
+    L
   </li>
   <li data-note="C5" class="key">
-    <div data-note="C#5" class="black-key">S</div>
+    <div data-note="C#5" class="black-key"></div>
     W
   </li>
   <li data-note="D5" class="key">
-    <div data-note="D#5" class="black-key">D</div>
+    <div data-note="D#5" class="black-key"></div>
     X
   </li>
   <li data-note="E5" class="key">
     C
   </li>
   <li data-note="F5" class="key">
-    <div data-note="F#5" class="black-key">G</div>
+    <div data-note="F#5" class="black-key"></div>
     V
   </li>
   <li data-note="G5" class="key">
-    <div data-note="G#5" class="black-key">H</div>
+    <div data-note="G#5" class="black-key"></div>
     B
   </li>
   <li data-note="A5" class="key">
-    <div data-note="A#5" class="black-key">J</div>
+    <div data-note="A#5" class="black-key"></div>
     N
   </li>
   <li data-note="B5" class="key">
-    ,
+    
   </li>  
 </ul>
 
@@ -208,6 +240,5 @@
 
 <script src="https://cdn.jsdelivr.net/npm/webmidi"></script>
 <script language="javascript" type="text/javascript" src="client/DemoReaderMIDI.js"></script>
-
 </body>
 </html>
