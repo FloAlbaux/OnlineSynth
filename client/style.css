@@ -174,7 +174,7 @@ input[type=range]:focus::-ms-fill-upper {
     margin-right: auto }
 .h1
 {
-<<<<<<< Updated upstream
+
    text-align: center;
    margin-top: 0px;
    font-style: italic;
@@ -201,7 +201,5 @@ input[type=range]:focus::-ms-fill-upper {
      
      left: -2 px;
 }
-=======
-     background-color: green;
-}
->>>>>>> Stashed changes
+
+
