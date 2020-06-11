@@ -586,24 +586,24 @@ function changeEq1()
   eqlow1.addEventListener("input", function () 
   {
     {   
-      EQ31.low.value = eqlow1.value  
-	  var txt = document.getElementById("peqlow1").innerHTML =eqlow1.value  + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+      EQ31.low.value = (-1*eqlow1.value)
+	  var txt = document.getElementById("peqlow1").innerHTML =(-1*eqlow1.value)  + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
     	  
     }
   });
   eqmid1.addEventListener("input", function () 
   {
     {   
-      EQ31.mid.value = eqmid1.value
-	  var txt = document.getElementById("peqmid1").innerHTML =eqmid1.value  + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+      EQ31.mid.value = (-1*eqmid1.value)
+	  var txt = document.getElementById("peqmid1").innerHTML =(-1*eqmid1.value)  + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
     
     }
   });
   eqhigt1.addEventListener("input", function () 
   {
     {   
-      EQ31.high.value = eqhigt1.value 
-	  var txt = document.getElementById("peqhigh1").innerHTML =eqhigt1.value   + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+      EQ31.high.value = (-1*eqhigt1.value )
+	  var txt = document.getElementById("peqhigh1").innerHTML =(-1*eqhigt1.value )   + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
     
     }
   });
@@ -614,25 +614,25 @@ function changeEq2()
   eqlow2.addEventListener("input", function () 
   {
     {   
-      EQ32.low.value = eqlow2.value  
-	  var txt = document.getElementById("peqlow2").innerHTML =eqlow2.value  + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+      EQ32.low.value = (-1*eqlow2.value)
+	  var txt = document.getElementById("peqlow2").innerHTML =(-1*eqlow2.value)  + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
     	  	  
     }
   });
   eqmid2.addEventListener("input", function () 
   {
     {   
-      EQ32.mid.value = eqmid2.value
-	  var txt = document.getElementById("peqmid2").innerHTML =eqmid2.value  + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+      EQ32.mid.value = (-1*eqmid2.value)
+	  var txt = document.getElementById("peqmid2").innerHTML =(-1*eqmid2.value)  + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
     
     }
   });
   eqhigt2.addEventListener("input", function () 
   {
     {   
-      EQ32.high.value = eqhigt2.value 
+      EQ32.high.value =  (-1*eqhigt2.value )
 
-	  var txt = document.getElementById("peqhigh2").innerHTML =eqhigt2.value   + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+	  var txt = document.getElementById("peqhigh2").innerHTML = (-1*eqhigt2.value )   + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
     }
   });
 }
