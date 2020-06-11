@@ -235,15 +235,19 @@ input[type=range]:focus::-ms-fill-upper {
   opacity: 0.3;
 }
 #EQ{
-	transform: rotate(-90deg);
-	margin-top: -180px;
+	transform: rotate(90deg);
+	margin-top: 325px;
 	margin-left: -275px;
-	margin-bottom:300px;
+	margin-bottom:-200px;
 }
-
+body
+{
+	background-image: url("images/bg.png");
+	background-size:100%;
+}
 #col_vol
 {
-	padding: 15px;
+	padding: 10px;
 }
 
 #btplay2, #btplay1
@@ -273,12 +277,3 @@ input[type=range]:focus::-ms-fill-upper {
   width: 30px;
   height: 21px;
 }
-
-.chorus
-{
-	margin-left: 0;
-}
-/* .texte
-{
-	margin-left: 0;
-} */

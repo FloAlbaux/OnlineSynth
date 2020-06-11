@@ -88,42 +88,56 @@ function setup()
   buttonSine1     =  document.getElementById('sine1');
   buttonSquare1   =  document.getElementById('square1');
   buttonTriangle1 =  document.getElementById('triangle1');
+  console.log("")
   buttonSawtooth1 =  document.getElementById('sawtooth1');
   buttonPlay1     =  document.getElementById('btplay1');
+  console.log("")
   buttonMute1	    =  document.getElementById('mute1');
 
   buttonSine1.addEventListener    ('click', change2Sine1);
+  console.log("")
   buttonSquare1.addEventListener  ('click', change2Square1);
   buttonTriangle1.addEventListener('click', change2Triangle1);
   buttonSawtooth1.addEventListener('click', change2Sawtooth1);
+  console.log("")
   buttonPlay1.addEventListener    ('click', playOscillator1);
   buttonMute1.addEventListener	  ('click', muteOsc1);	
 
   buttonSine2     =  document.getElementById('sine2');
   buttonSquare2   =  document.getElementById('square2');
+  console.log("")
   buttonTriangle2 =  document.getElementById('triangle2');
   buttonSawtooth2 =  document.getElementById('sawtooth2');
+  console.log("")
   buttonPlay2     =  document.getElementById('btplay2');
   buttonMute2	  =  document.getElementById('mute2');
+  console.log("")
 
   buttonSine2.addEventListener    ('click', change2Sine2);
   buttonSquare2.addEventListener  ('click', change2Square2);
+  console.log("")
   buttonTriangle2.addEventListener('click', change2Triangle2);
   buttonSawtooth2.addEventListener('click', change2Sawtooth2);
+  console.log("")
   buttonPlay2.addEventListener    ('click', playOscillator2);
   buttonMute2.addEventListener	  ('click', muteOsc2);	
+  console.log("")
   
   buttonLowDrum   =  document.getElementById('btLD');
   buttonMidDrum   =  document.getElementById('btMD');
   buttonFastDrum  =  document.getElementById('btFD');
+  console.log("")
   buttonPlay3     =  document.getElementById('btplay3');
   buttonMuteD	    =  document.getElementById('muteD');
+  console.log("")
 
   
   buttonLowDrum.addEventListener    ('click', change2LowDrum);
   buttonMidDrum.addEventListener  ('click', change2MidDrum);
+  console.log("")
   buttonFastDrum.addEventListener('click', change2FastDrum);
   buttonPlay3.addEventListener    ('click', playDrumSample);
+  console.log("")
   buttonMuteD.addEventListener	  ('click', muteOscD);	
   
     //buttonPlay1.style.backgroundColor = "green";
@@ -141,6 +155,7 @@ function setup()
   volume3 =  document.getElementById('svol3');
   volume3.addEventListener    ('mousedown' , changeVolume3);
 
+	console.log("")
   vibrato1 =  document.getElementById('vibrato1');
   vibrato1.addEventListener    ('mousedown' , changeVibrato1);
   chorus1 =  document.getElementById('chorus1');
@@ -149,30 +164,36 @@ function setup()
   distortion1.addEventListener    ('mousedown' , changeDistortion1);
   pingp1 =  document.getElementById('pingp1');
   pingp1.addEventListener    ('mousedown' , changePingp1);
+  console.log("")
   pan1 =  document.getElementById('pan1');
   pan1.addEventListener    ('mousedown' , changePan1);
   eqlow1 =  document.getElementById('eqlow1');
   eqlow1.addEventListener    ('mousedown' , changeEq1);
   eqmid1 =  document.getElementById('eqmid1');
   eqmid1.addEventListener    ('mousedown' , changeEq1);
+  console.log("")
   eqhigt1 =  document.getElementById('eqhigh1');
   eqhigt1.addEventListener    ('mousedown' , changeEq1);
 
   vibrato2 =  document.getElementById('vibrato2');
   vibrato2.addEventListener    ('mousedown' , changeVibrato2);
+  console.log("")
   chorus2 =  document.getElementById('chorus2');
   chorus2.addEventListener    ('mousedown' , changeChorus2);
   distortion2 =  document.getElementById('distortion2');
   distortion2.addEventListener    ('mousedown' , changeDistortion2);
+  console.log("")
   pingp2 =  document.getElementById('pingp2');
   pingp2.addEventListener    ('mousedown' , changePingp2);
   pan2 =  document.getElementById('pan2');
   pan2.addEventListener    ('mousedown' , changePan2);
   eqlow2 =  document.getElementById('eqlow2');
   eqlow2.addEventListener    ('mousedown' , changeEq2);
+  console.log("")
   eqmid2 =  document.getElementById('eqmid2');
   eqmid2.addEventListener    ('mousedown' , changeEq2);
   eqhigt2 =  document.getElementById('eqhigh2');
+  console.log("")
   eqhigt2.addEventListener    ('mousedown' , changeEq2);
 }
 
@@ -365,12 +386,15 @@ function playDrumSample()
   playDrum=!playDrum;
   if (playDrum)
   {
+	drum.amp(volume3.value/100);
     drum.loop();
+	buttonPlay3.style.opacity= 1
   }
   else
   {
     drum.amp(0, 0);
     drum.pause();
+	buttonPlay3.style.opacity= 0.3
   }
 }
 document.addEventListener("keydown", e => {
