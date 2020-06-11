@@ -33,7 +33,7 @@
     </div>
     <div class = "play">
       <input type="button" class="btplay1" id="btplay1">
-       <img class = "display1" src=image_pause.png alt="Une image de pause:)" height="10%" width="10%"/>
+      <img class = "display1" src=image_pause.png alt="Une image de pause:)" height="10%" width="10%"/>
       <input type="range" min="0" max="50" value="25" class="slider" id="svol1">
        VOL
     </div>
@@ -178,6 +178,7 @@
   </div>
 </div>
 
+
 <div>
   <ul id="piano">
     <li data-note="C4" class="key">
@@ -250,6 +251,8 @@
 	</form>
 	
 <script language="javascript" type="text/javascript" src="client/sketch.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/webmidi"></script>
 <script language="javascript" type="text/javascript" src="client/DemoReaderMIDI.js"></script>
 <script type="text/javascript">
   var synth = new Tone.Synth().toMaster();

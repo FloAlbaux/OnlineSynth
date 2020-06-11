@@ -193,9 +193,39 @@ input[type=range]:focus::-ms-fill-upper {
   height: 0px;
   opacity: 0;
   align-items: flex-end;
-  position: absolute;
-     
-     left: -2 px;
+  position: absolute;    
+  left: -2 px;
+}
+#sine2, #sine1
+{
+  background-image: url("images/sine.png");
+  background-size: 100%;
+  height: 30px;
+  width: 33px;
+}
+#square2, #square1
+{
+  background-image: url("images/square.png");
+  background-size: 100%;
+  height: 30px;
+  width: 33px;
+  opacity: 0.3;
+}
+#triangle1, #triangle2
+{
+  background-image: url("images/triangle.png");
+  background-size: 100%;
+  height: 30px;
+  width: 33px;
+  opacity: 0.3;
+}
+#sawtooth1, #sawtooth2
+{
+  background-image: url("images/sawtooth.png");
+  background-size: 100%;
+  height: 30px;
+  width: 33px;
+  opacity: 0.3;
 }
 
 #record
