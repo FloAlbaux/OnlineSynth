@@ -18,12 +18,18 @@ var Pan2, Chorus2, Distortion2, Pingp2, Vibrato2, EQ32, Vol2;
 var Pan3, Chorus3, Distortion3, Pingp3, Vibrato3, EQ33, Vol3;*/
 
 var note;
+var btn = new Array(10)
+var Recorder, caseRecord=0, myDiv, i=0;
+var fileRecord = new Array()
+//var bmp, BMP, player;
 
 function setup() 
 {
+  Recorder   = new p5.SoundRecorder();
+  myDiv = document.getElementById('recordList')
+
   //Initialize Tone.js synthetizer
   drum = loadSound("client/audio/midDrum.mp3");
-  //
 
   /****************************SYNTH 1****************************/
   Vol1        = new Tone.Volume(0);
@@ -73,6 +79,9 @@ function setup()
   /**********************************************************/
   /**************************BOUTON**************************/
   /**********************************************************/
+  buttonRecord = document.getElementById('record');
+  buttonRecord.addEventListener('click', buttonRecordClik)
+
   buttonSine1     =  document.getElementById('sine1');
   buttonSquare1   =  document.getElementById('square1');
   buttonTriangle1 =  document.getElementById('triangle1');
@@ -115,7 +124,7 @@ function setup()
   buttonMuteD.addEventListener	  ('click', muteOscD);	
   
     buttonPlay1.style.backgroundColor = "green";
-  buttonPlay2.style.backgroundColor = "green";
+  buttonPlay2.style.backgroundColor = "green"; 
   
   /**********************************************************/
   /**************************SLIDER**************************/
@@ -164,6 +173,45 @@ function setup()
   eqhigt2.addEventListener    ('mousedown' , changeEq2);
 }
 
+function buttonRecordClik()
+{
+  switch (caseRecord)
+  {
+    case 0 :
+      fileRecord[i] = new p5.SoundFile();
+      Recorder.record(fileRecord[i]);
+      buttonRecord.style.background = "url(client/images/blink.gif)";
+      caseRecord++;
+    break;
+    case 1:
+      Recorder.stop();
+      buttonRecord.style.background = "url(client/images/dl.png)";
+      caseRecord++; 
+    break;
+    case 2:
+      //fileRecord[i] 
+      name = prompt ('name of the file')
+      save(fileRecord[i], name+'.mp3');
+      buttonRecord.style.background = "url(client/images/buttonRed.png)";
+      
+      btn[i] = document.createElement("BUTTON");        // Créer un élément <button>
+      var t = document.createTextNode(name);       // Créer un noeud textuel
+      btn[i].appendChild(t);                                // Ajouter le texte au bouton
+      myDiv.appendChild(btn[i]);                    // Ajoute la balise <button> à la balise <body>
+      btn[i].addEventListener("click", function(){
+        fileRecord[i-1].play();
+      });
+      i=i+1
+      caseRecord=0; 
+      break;
+  }
+}
+
+/*function test[i-1]()
+{
+
+}*/
+
 function change2Sine1()
 {
   synth1.disconnect()
@@ -172,7 +220,10 @@ function change2Sine1()
       type : "sine"
     }
   }).chain(Vol1, EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master);
-  
+  buttonSquare1.style.opacity=0.3
+  buttonTriangle1.style.opacity=0.3
+  buttonSawtooth1.style.opacity=0.3
+  buttonSine1.style.opacity=1
 }
 function change2Square1()
 {
@@ -182,7 +233,10 @@ function change2Square1()
       type : "square"
     }
   }).chain(Vol1, EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master);
-  
+  buttonSine1.style.opacity=0.3
+  buttonTriangle1.style.opacity=0.3
+  buttonSawtooth1.style.opacity=0.3
+  buttonSquare1.style.opacity=1
 }
 function change2Triangle1()
 {
@@ -192,6 +246,10 @@ function change2Triangle1()
       type : "triangle"
     }
   }).chain(Vol1, EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master);
+  buttonSquare1.style.opacity=0.3
+  buttonSine1.style.opacity=0.3
+  buttonSawtooth1.style.opacity=0.3
+  buttonTriangle1.style.opacity=1
 }
 function change2Sawtooth1()
 {
@@ -201,6 +259,10 @@ function change2Sawtooth1()
       type : "sawtooth"
     }
   }).chain(Vol1, EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master);
+  buttonSquare1.style.opacity=0.3
+  buttonTriangle1.style.opacity=0.3
+  buttonSine1.style.opacity=0.3
+  buttonSawtooth1.style.opacity=1
 }
 function change2Sine2()
 {
@@ -210,6 +272,10 @@ function change2Sine2()
       type : "sine"
     }
   }).chain(Vol2, EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master);
+  buttonSquare2.style.opacity=0.3
+  buttonTriangle2.style.opacity=0.3
+  buttonSawtooth2.style.opacity=0.3
+  buttonSine2.style.opacity=1
 }
 function change2Square2()
 {
@@ -219,6 +285,10 @@ function change2Square2()
       type : "square"
     }
   }).chain(Vol2, EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master);
+  buttonSquare2.style.opacity=1
+  buttonTriangle2.style.opacity=0.3
+  buttonSawtooth2.style.opacity=0.3
+  buttonSine2.style.opacity=0.3
 }
 function change2Triangle2()
 {
@@ -228,6 +298,10 @@ function change2Triangle2()
       type : "triangle"
     }
   }).chain(Vol2, EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master);
+  buttonSquare2.style.opacity=0.3
+  buttonTriangle2.style.opacity=1
+  buttonSawtooth2.style.opacity=0.3
+  buttonSine2.style.opacity=0.3
 }
 function change2Sawtooth2()
 {
@@ -237,6 +311,10 @@ function change2Sawtooth2()
       type : "sawtooth"
     }
   }).chain(Vol2, EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master);
+  buttonSquare2.style.opacity=0.3
+  buttonTriangle2.style.opacity=0.3
+  buttonSawtooth2.style.opacity=1
+  buttonSine2.style.opacity=0.3
 }
 function change2LowDrum()
 {

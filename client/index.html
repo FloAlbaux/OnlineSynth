@@ -25,10 +25,10 @@
   <div class = "channel"> 
     <h2>Synth A</h2>
     <div class = "osc">
-      <button id="sine1">sine</button>
-      <button id="square1">square</button>
-      <button id="triangle1">triangle</button>
-      <button id="sawtooth1">sawtooth</button>
+      <button id="sine1"></button>
+      <button id="square1"></button>
+      <button id="triangle1"></button>
+      <button id="sawtooth1"></button>
     </div>
     <div class = "play">
       <input type="button" class="btplay1" id="btplay1">
@@ -82,10 +82,10 @@
   <div class = "channel"> 
     <h2>Synth B</h2>
     <div class = "osc">
-      <button id="sine2">sine</button>
-      <button id="square2">square</button>
-      <button id="triangle2">triangle</button>
-      <button id="sawtooth2">sawtooth</button>
+      <button id="sine2"></button>
+      <button id="square2"></button>
+      <button id="triangle2"></button>
+      <button id="sawtooth2"></button>
     </div>
     <div class = "play">
       <input type="button" class="btplay2" id="btplay2">
@@ -156,14 +156,18 @@
   <div class = "channelConf"> 
       <h2>Record</h2>
     <div class = "playM">
+      <button onclick="start()">Start</button>
+	<button onclick="stop()">Stop</button>
+	<form>
+		<input id="bpm" type="number" value="60">
+		<button type="button" onclick="submitBPM()">Enter BPM</button>
+	</form>
       <button class="bpplayM">play</button>
-      <input type="range" min="0" max="75" value="0" class="slider" id="vol">
+      <input type="range" min="0" max="200" value="100" class="slider" id="svol3">
+      <input type="range" min="0" max="200" value="100" class="slider" id="bpm">
+      <button id="record"></button>
     </div>
-    <div class = "record">
-      <button class="record">Record</button>
-    </div>
-    <div class = "Download">
-      <button class="dl">Download</button>
+    <div id = "recordList">
     </div>
   </div>
    
@@ -171,6 +175,7 @@
 
 
 <div>
+<<<<<<< HEAD
 <ul id="piano">
   <li data-note="C4" class="key">
     <div data-note="C#4" class="black-key">é</div>
@@ -227,15 +232,109 @@
 </ul>
 
 </div>
+=======
+  <ul id="piano">
+    <li data-note="C4" class="key">
+      <div data-note="C#4" class="black-key">é</div>
+      A
+    </li>
+    <li data-note="D4" class="key">
+      <div data-note="D#4" class="black-key">"</div>
+      Z
+    </li>
+    <li data-note="E4" class="key">
+      E
+    </li>
+    <li data-note="F4" class="key">
+      <div data-note="F#4" class="black-key">(</div>
+      R
+    </li>
+    <li data-note="G4" class="key">
+      <div data-note="G#4" class="black-key">-</div>
+      T
+    </li>
+    <li data-note="A4" class="key">
+      <div data-note="A#4" class="black-key">è</div>
+      Y
+    </li>
+    <li data-note="B4" class="key">
+      U
+    </li>
+    <li data-note="C5" class="key">
+      <div data-note="C#5" class="black-key">S</div>
+      W
+    </li>
+    <li data-note="D5" class="key">
+      <div data-note="D#5" class="black-key">D</div>
+      X
+    </li>
+    <li data-note="E5" class="key">
+      C
+    </li>
+    <li data-note="F5" class="key">
+      <div data-note="F#5" class="black-key">G</div>
+      V
+    </li>
+    <li data-note="G5" class="key">
+      <div data-note="G#5" class="black-key">H</div>
+      B
+    </li>
+    <li data-note="A5" class="key">
+      <div data-note="A#5" class="black-key">J</div>
+      N
+    </li>
+    <li data-note="B5" class="key">
+      ,
+    </li>  
+  </ul>
+  
+  </div>
+>>>>>>> master
 
 <script type="text/javascript" src="https://unpkg.com/tone"></script>
+<script src="https://cdn.jsdelivr.net/npm/webmidi"></script>
 <script language="javascript" type="text/javascript" src="client/libraries/p5.js"></script>
 <script language="javascript" src="client/libraries/p5.dom.js"></script>
 <script language="javascript" src="client/libraries/p5.sound.js"></script>
+
+<button onclick="start()">Start</button>
+	<button onclick="stop()">Stop</button>
+	<form>
+		<input id="bpm" type="number" value="120">
+		<button type="button" onclick="submitBPM()">Enter BPM</button>
+	</form>
+	
 <script language="javascript" type="text/javascript" src="client/sketch.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/webmidi"></script>
 <script language="javascript" type="text/javascript" src="client/DemoReaderMIDI.js"></script>
+<script type="text/javascript">
+  var synth = new Tone.Synth().toMaster();
+  var bmp = 120;
+
+  Tone.Transport.scheduleRepeat(function(time){
+  synth.triggerAttackRelease("C4", "16n");
+  Tone.Draw.schedule(function(){}, time);
+}, "4n");
+
+  function start() {
+    console.log("start")
+    Tone.Transport.stop();
+    Tone.Transport.start();
+  }
+
+  function stop() {
+    console.log("stop")
+    Tone.Transport.stop();
+  }
+
+  function submitBPM() {
+    console.log("submitBPM")
+    bpm = document.getElementById('bpm').value;
+    Tone.Transport.bpm.value = bpm;
+  }
+
+</script>
 
 </body>
 </html>
