@@ -51,7 +51,7 @@
 .container
 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: space-evenly;
 }
 .slidecontainer {
@@ -170,8 +170,8 @@ input[type=range]:focus::-ms-fill-upper {
 }
 .displayed {
     display: block;
-    margin-left: auto;
-    margin-right: auto }
+    /* margin-left: auto;
+    margin-right: auto */ }
 .h1
 {
 
