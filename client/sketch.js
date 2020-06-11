@@ -220,7 +220,10 @@ function change2Sine1()
       type : "sine"
     }
   }).chain(Vol1, EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master);
-  
+  buttonSquare1.style.opacity=0.3
+  buttonTriangle1.style.opacity=0.3
+  buttonSawtooth1.style.opacity=0.3
+  buttonSine1.style.opacity=1
 }
 function change2Square1()
 {
@@ -230,7 +233,10 @@ function change2Square1()
       type : "square"
     }
   }).chain(Vol1, EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master);
-  
+  buttonSine1.style.opacity=0.3
+  buttonTriangle1.style.opacity=0.3
+  buttonSawtooth1.style.opacity=0.3
+  buttonSquare1.style.opacity=1
 }
 function change2Triangle1()
 {
@@ -240,6 +246,10 @@ function change2Triangle1()
       type : "triangle"
     }
   }).chain(Vol1, EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master);
+  buttonSquare1.style.opacity=0.3
+  buttonSine1.style.opacity=0.3
+  buttonSawtooth1.style.opacity=0.3
+  buttonTriangle1.style.opacity=1
 }
 function change2Sawtooth1()
 {
@@ -249,6 +259,10 @@ function change2Sawtooth1()
       type : "sawtooth"
     }
   }).chain(Vol1, EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master);
+  buttonSquare1.style.opacity=0.3
+  buttonTriangle1.style.opacity=0.3
+  buttonSine1.style.opacity=0.3
+  buttonSawtooth1.style.opacity=1
 }
 function change2Sine2()
 {
@@ -258,6 +272,10 @@ function change2Sine2()
       type : "sine"
     }
   }).chain(Vol2, EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master);
+  buttonSquare2.style.opacity=0.3
+  buttonTriangle2.style.opacity=0.3
+  buttonSawtooth2.style.opacity=0.3
+  buttonSine2.style.opacity=1
 }
 function change2Square2()
 {
@@ -267,6 +285,10 @@ function change2Square2()
       type : "square"
     }
   }).chain(Vol2, EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master);
+  buttonSquare2.style.opacity=1
+  buttonTriangle2.style.opacity=0.3
+  buttonSawtooth2.style.opacity=0.3
+  buttonSine2.style.opacity=0.3
 }
 function change2Triangle2()
 {
@@ -276,6 +298,10 @@ function change2Triangle2()
       type : "triangle"
     }
   }).chain(Vol2, EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master);
+  buttonSquare2.style.opacity=0.3
+  buttonTriangle2.style.opacity=1
+  buttonSawtooth2.style.opacity=0.3
+  buttonSine2.style.opacity=0.3
 }
 function change2Sawtooth2()
 {
@@ -285,6 +311,10 @@ function change2Sawtooth2()
       type : "sawtooth"
     }
   }).chain(Vol2, EQ32, Vibrato2, Pan2, Chorus2, Distortion2, Pingp2, Tone.Master);
+  buttonSquare2.style.opacity=0.3
+  buttonTriangle2.style.opacity=0.3
+  buttonSawtooth2.style.opacity=1
+  buttonSine2.style.opacity=0.3
 }
 function change2LowDrum()
 {
