@@ -18,16 +18,18 @@ var Pan2, Chorus2, Distortion2, Pingp2, Vibrato2, EQ32, Vol2;
 var Pan3, Chorus3, Distortion3, Pingp3, Vibrato3, EQ33, Vol3;*/
 
 var note;
-var Recorder, caseRecord=0, fileRecord;
+var btn = new Array(10)
+var Recorder, caseRecord=0, myDiv, i=0;
+var fileRecord = new Array()
+//var bmp, BMP, player;
 
 function setup() 
 {
   Recorder   = new p5.SoundRecorder();
-  fileRecord = new p5.SoundFile();
+  myDiv = document.getElementById('recordList')
 
   //Initialize Tone.js synthetizer
   drum = loadSound("client/audio/midDrum.mp3");
-  //
 
   /****************************SYNTH 1****************************/
   Vol1        = new Tone.Volume(0);
@@ -122,7 +124,7 @@ function setup()
   buttonMuteD.addEventListener	  ('click', muteOscD);	
   
     buttonPlay1.style.backgroundColor = "green";
-  buttonPlay2.style.backgroundColor = "green";
+  buttonPlay2.style.backgroundColor = "green"; 
   
   /**********************************************************/
   /**************************SLIDER**************************/
@@ -176,26 +178,39 @@ function buttonRecordClik()
   switch (caseRecord)
   {
     case 0 :
-      console.log("ca record")
-      Recorder.record(fileRecord);
+      fileRecord[i] = new p5.SoundFile();
+      Recorder.record(fileRecord[i]);
       buttonRecord.style.background = "url(client/images/blink.gif)";
       caseRecord++;
     break;
     case 1:
-      console.log("tu peux dl")
       Recorder.stop();
       buttonRecord.style.background = "url(client/images/dl.png)";
       caseRecord++; 
     break;
     case 2:
-      console.log("tu nommes le bail")
+      //fileRecord[i] 
       name = prompt ('name of the file')
-      save(fileRecord, name+'.mp3');
+      save(fileRecord[i], name+'.mp3');
       buttonRecord.style.background = "url(client/images/buttonRed.png)";
+      
+      btn[i] = document.createElement("BUTTON");        // Créer un élément <button>
+      var t = document.createTextNode(name);       // Créer un noeud textuel
+      btn[i].appendChild(t);                                // Ajouter le texte au bouton
+      myDiv.appendChild(btn[i]);                    // Ajoute la balise <button> à la balise <body>
+      btn[i].addEventListener("click", function(){
+        fileRecord[i-1].play();
+      });
+      i=i+1
       caseRecord=0; 
-    break;
+      break;
   }
 }
+
+/*function test[i-1]()
+{
+
+}*/
 
 function change2Sine1()
 {

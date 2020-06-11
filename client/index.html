@@ -162,14 +162,18 @@
 
   <div class = "channelConf"> 
     <div class = "playM">
+      <button onclick="start()">Start</button>
+	<button onclick="stop()">Stop</button>
+	<form>
+		<input id="bpm" type="number" value="60">
+		<button type="button" onclick="submitBPM()">Enter BPM</button>
+	</form>
       <button class="bpplayM">play</button>
       <input type="range" min="0" max="200" value="100" class="slider" id="svol3">
+      <input type="range" min="0" max="200" value="100" class="slider" id="bpm">
+      <button id="record"></button>
     </div>
-    <div class = "record">
-      <button class="record", id="record"></button>
-    </div>
-    <div class = "Download">
-      <button class="dl">Download</button>
+    <div id = "recordList">
     </div>
   </div>
 </div>
@@ -233,12 +237,47 @@
   </div>
 
 <script type="text/javascript" src="https://unpkg.com/tone"></script>
+<script src="https://cdn.jsdelivr.net/npm/webmidi"></script>
 <script language="javascript" type="text/javascript" src="client/libraries/p5.js"></script>
 <script language="javascript" src="client/libraries/p5.dom.js"></script>
 <script language="javascript" src="client/libraries/p5.sound.js"></script>
+
+<button onclick="start()">Start</button>
+	<button onclick="stop()">Stop</button>
+	<form>
+		<input id="bpm" type="number" value="120">
+		<button type="button" onclick="submitBPM()">Enter BPM</button>
+	</form>
+	
 <script language="javascript" type="text/javascript" src="client/sketch.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/webmidi"></script>
 <script language="javascript" type="text/javascript" src="client/DemoReaderMIDI.js"></script>
+<script type="text/javascript">
+  var synth = new Tone.Synth().toMaster();
+  var bmp = 120;
+
+  Tone.Transport.scheduleRepeat(function(time){
+  synth.triggerAttackRelease("C4", "16n");
+  Tone.Draw.schedule(function(){}, time);
+}, "4n");
+
+  function start() {
+    console.log("start")
+    Tone.Transport.stop();
+    Tone.Transport.start();
+  }
+
+  function stop() {
+    console.log("stop")
+    Tone.Transport.stop();
+  }
+
+  function submitBPM() {
+    console.log("submitBPM")
+    bpm = document.getElementById('bpm').value;
+    Tone.Transport.bpm.value = bpm;
+  }
+
+</script>
 
 </body>
 </html>

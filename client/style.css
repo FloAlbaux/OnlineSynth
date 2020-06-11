@@ -198,7 +198,7 @@ input[type=range]:focus::-ms-fill-upper {
      left: -2 px;
 }
 
-.record
+#record
 {
   background-image: url("images/buttonRed.png");
   background-size: 100%;
