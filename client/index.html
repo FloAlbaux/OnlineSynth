@@ -35,45 +35,50 @@
 		<button class="btplay1" id="btplay1"></button>
 
       <!-- <img class = "display1" src=client/image_pause.png alt="Une image de pause:)" height="10%" width="10%"/> -->
-      <input type="range" min="0" max="50" value="25" class="slider" id="svol1">
+      <input type="range" min="-39" max="39" value="0" class="slider" id="svol1"><span id="pvol1"> 0 dB</span>
     </div>
     <div class = "vibrato">
 	  <img class = "display1" src=client/images/vibrato.png height="30px" width="30px"/>
-      <input type="range" min="0" max="800" value="0" class="slider" id="vibrato1">
+      <input type="range" min="0" max="800" value="0" class="slider" id="vibrato1"><span id="pvibrato1"> 0</span>
       
     </div>
     <div class = "chorus">
+	
 	<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/>
-      <input type="range" min="0" max="50" value="0" class="slider" id="chorus1">
+    <input type="range" min="0" max="50" value="0" class="slider" id="chorus1"><span id="pchorus1"> 0</span>
+	 <!-- <p class="texte" id="pchorus1">0</p> -->
       
     </div>
     <div class = "distortion">
 		<img class = "display1" src=client/images/disto.png height="30px" width="30px"/>
-      <input type="range" min="0" max="10" value="0" class="slider" id="distortion1">
+      <input type="range" min="0" max="100" value="0" class="slider" id="distortion1"><span id="pdisto1"> 0</span>
       
     </div>
     <div class = "pingp">
 	<img class = "display1" src=client/images/pingpong.png height="30px" width="30px"/>
-      <input type="range" min="0" max="20" value="0" class="slider" id="pingp1">
+      <input type="range" min="0" max="20" value="0" class="slider" id="pingp1"><span id="ppingp1"> 0 hz</span>
       
     </div>
     <div class = "pan">
 	<img class = "display1" src=client/images/pan.png height="30px" width="30px"/>
-      <input type="range" min="-100" max="100" value="0" class="slider" id="pan1">
+      <input type="range" min="-100" max="100" value="0" class="slider" id="pan1"><span id="ppan1"> 0</span>
       
     </div>
     <div id="EQ">
      <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqhigh1">
-        H
+	 L<span id="peqlow1"> 0 dB</span>
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqlow1">
+        
       </div>
       <div id = "col_vol">
+	   M<span id="peqmid1"> 0 dB</span>
         <input type="range" min="-39" max="39" value="0" class="EQu" id="eqmid1">  
-        M
+       
       </div>
       <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqlow1">   
-        L
+	  H<span id="peqhigh1">  0 dB</span>
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqhigh1">   
+        
       </div>
     </div>
     <div class = "sett">
@@ -92,45 +97,47 @@
     </div>
     <div class = "play">
       <input type="button" class="btplay2" id="btplay2">
-      <input type="range" min="0" max="50" value="25" class="slider" id="svol2">
+      <input type="range" min="0" max="50" value="25" class="slider" id="svol2"><span id="pvol2"> 0 dB</span>
     </div>
     <div class = "vibrato">
 	 <img class = "display1" src=client/images/vibrato.png height="30px" width="30px"/>
-      <input type="range" min="0" max="800" value="0" class="slider" id="vibrato2">
+      <input type="range" min="0" max="800" value="0" class="slider" id="vibrato2"><span id="pvibrato2"> 0</span>
      
     </div>
     <div class = "chorus">
 	<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/>
-      <input type="range" min="0" max="50" value="0" class="slider" id="chorus2">
+      <input type="range" min="0" max="50" value="0" class="slider" id="chorus2"><span id="pchorus2"> 0</span>
       
     </div>
     <div class = "distortion">
 	<img class = "display1" src=client/images/disto.png height="30px" width="30px"/>
-      <input type="range" min="0" max="10" value="0" class="slider" id="distortion2">
+      <input type="range" min="0" max="100" value="0" class="slider" id="distortion2"><span id="pdisto2"> 0</span>
       
     </div>
     <div class = "pingp">
 	<img class = "display1" src=client/images/pingpong.png height="30px" width="30px"/>
-      <input type="range" min="0" max="20" value="0" class="slider" id="pingp2">
+      <input type="range" min="0" max="20" value="0" class="slider" id="pingp2"><span id="ppingp2"> 0 hz</span>
       
     </div>
     <div class = "pan2">
 	<img class = "display1" src=client/images/pan.png height="30px" width="30px"/>
-      <input type="range" min="-100" max="100" value="0" class="slider" id="pan2">
+      <input type="range" min="-100" max="100" value="0" class="slider" id="pan2"><span id="ppan2"> 0</span>
       
     </div>
     <div id="EQ">
      <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqhigh2">
-        H
+	 L<span id="peqlow2"> 0 dB </span>
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqlow2">
+        
       </div>
       <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqmid2"> 
-        M
+	   M<span id="peqmid2"> 0 dB</span>
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqmid2">  
+       
       </div>
       <div id = "col_vol">
-        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqlow2"> 
-        L
+	  H<span id="peqhigh2">  0 dB</span>
+        <input type="range" min="-39" max="39" value="0" class="EQu" id="eqhigh2">   
       </div>
     </div>
     <div class = "sett">

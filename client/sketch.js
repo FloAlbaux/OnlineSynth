@@ -163,7 +163,7 @@ function setup()
   chorus2 =  document.getElementById('chorus2');
   chorus2.addEventListener    ('mousedown' , changeChorus2);
   distortion2 =  document.getElementById('distortion2');
-  distortion2.addEventListener    ('mousedown' , changeDistortion1);
+  distortion2.addEventListener    ('mousedown' , changeDistortion2);
   pingp2 =  document.getElementById('pingp2');
   pingp2.addEventListener    ('mousedown' , changePingp2);
   pan2 =  document.getElementById('pan2');
@@ -191,13 +191,15 @@ function change2Sine1()
 }
 function change2Square1()
 {
+  console.log("1")
   synth1.disconnect()
   synth1 = new Tone.PolySynth(4, Tone.Synth, {
     oscillator : {
       type : "square"
     }
   }).chain(Vol1, EQ31, Vibrato1, Pan1, Chorus1, Distortion1, Pingp1, Tone.Master);
-    buttonSquare1.style.opacity=1
+  
+  buttonSquare1.style.opacity=1
   buttonTriangle1.style.opacity=0.3
   buttonSawtooth1.style.opacity=0.3
   buttonSine1.style.opacity=0.3
@@ -299,11 +301,11 @@ function playOscillator1()
 {
    p1=!p1;
    if(p1) {
-	// buttonPlay1.style.opacity = "1";
+	buttonPlay1.style.opacity = "1";
 	which_synth = which_synth + 1;
    }
    else {
-	buttonPlay1.style.opacity = "0,3";
+	buttonPlay1.style.opacity = 0.3;
 	//buttonPlay1.style.backgroundColor = "red";
 	which_synth = which_synth - 1;
    }
@@ -327,7 +329,7 @@ function buttonRecordClik()
     case 2:
       //fileRecord[i] 
       name = prompt ('name of the file')
-      save(fileRecord[i], name+'.mp3');
+      save(fileRecord[i], name);
       buttonRecord.style.background = "url(client/images/buttonRed.png)";
 
       btn[i] = document.createElement("BUTTON");        // Créer un élément <button>
@@ -402,6 +404,8 @@ function changeVolume1()
   {
     {
       Vol1.volume.value=volume1.value
+	  var txt = document.getElementById("pvol1").innerHTML =volume1.value + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+    
     }
   });
 }
@@ -411,6 +415,8 @@ function changeVolume2()
   {
     {
       Vol2.volume.value=volume2.value
+	  var txt = document.getElementById("pvol2").innerHTML =volume2.value + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+    
     }
   });
 }
@@ -420,6 +426,7 @@ function changeVolume3()
   {
     {
       drum.amp(volume3.value/100)
+	  
     }
   });
 }
@@ -433,6 +440,8 @@ function changeVibrato1()
       Vibrato1.frequency.value = vibrato1.value/100
       if(vibrato1.value==0)
         Vibrato1.depth.value = 0
+	  var txt = document.getElementById("pvibrato1").innerHTML =vibrato1.value/100//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+    
     }
   });
 }
@@ -444,6 +453,8 @@ function changeVibrato2()
       Vibrato2.frequency.value = vibrato2.value/100
       if(vibrato2.value==0)
         Vibrato2.depth.value = 0
+	  var txt = document.getElementById("pvibrato2").innerHTML =vibrato2.value/100//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+    
     }
   });
 }
@@ -453,6 +464,7 @@ function changeChorus1()
   {
     {
       Chorus1.delayTime=chorus1.value/10//new Intl.NumberFormat('de-DE').format(chorus1.value/100)
+	  var txt = document.getElementById("pchorus1").innerHTML =chorus1.value/10//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
     }
   });
 }
@@ -462,6 +474,8 @@ function changeChorus2()
   {
     {
       Chorus2.delayTime=chorus2.value/10//new Intl.NumberFormat('de-DE').format(chorus1.value/100)
+	 var txt = document.getElementById("pchorus2").innerHTML =chorus2.value/10//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+    
     }
   });
 }
@@ -471,7 +485,9 @@ function changeDistortion1()
   distortion1.addEventListener("input", function () 
   {
     {      
-      Distortion1.distortion = distortion1.value/10
+      Distortion1.distortion = distortion1.value/100
+	  var txt = document.getElementById("pdisto1").innerHTML =distortion1.value/10//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+    
     }
   });
 }
@@ -480,7 +496,9 @@ function changeDistortion2()
   distortion2.addEventListener("input", function () 
   {
     {      
-      Distortion2.distortion = distortion2.value/10
+	console.log("disto")
+      Distortion2.distortion = distortion2.value/100
+	  var txt = document.getElementById("pdisto2").innerHTML =distortion2.value/10//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
     }
   });
 }
@@ -496,6 +514,8 @@ function changePingp1()
       else
         Pingp1.delayTime.value = (pingp1.value) + "hz" // hertz //+ "n"//pingp1.value/100
       //Pingp1.feedback = 1
+	  var txt = document.getElementById("ppingp1").innerHTML =(pingp1.value) + "hz"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+   
     }
   });
 }
@@ -511,6 +531,8 @@ function changePingp2()
       else
         Pingp2.delayTime.value = (pingp2.value) + "hz" // hertz //+ "n"//pingp1.value/100
       //Pingp1.feedback = 1
+	  var txt = document.getElementById("ppingp2").innerHTML =(pingp2.value) + "hz"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+   
     }
   });
 }
@@ -519,7 +541,9 @@ function changePan1()
   pan1.addEventListener("input", function () 
   {
     {   
-      Pan1.pan.value = pan1.value/100       // hertz //+ "n"//pingp2.value/200    
+      Pan1.pan.value = pan1.value/100       // hertz //+ "n"//pingp2.value/200 
+	  var txt = document.getElementById("ppan1").innerHTML =pan1.value/100  //'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+   	  
     }
   });
 }
@@ -528,7 +552,8 @@ function changePan2()
   pan2.addEventListener("input", function () 
   {
     {   
-      Pan2.pan.value = pan2.value/100// hertz //+ "n"//pingp2.value/200    
+      Pan2.pan.value = pan2.value/100// hertz //+ "n"//pingp2.value/200  
+	   var txt = document.getElementById("ppan2").innerHTML =pan2.value/100  //'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value 	  	  
     }
   });
 }
@@ -537,19 +562,25 @@ function changeEq1()
   eqlow1.addEventListener("input", function () 
   {
     {   
-      EQ31.low.value = eqlow1.value    
+      EQ31.low.value = eqlow1.value  
+	  var txt = document.getElementById("peqlow1").innerHTML =eqlow1.value  + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+    	  
     }
   });
   eqmid1.addEventListener("input", function () 
   {
     {   
       EQ31.mid.value = eqmid1.value
+	  var txt = document.getElementById("peqmid1").innerHTML =eqmid1.value  + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+    
     }
   });
   eqhigt1.addEventListener("input", function () 
   {
     {   
       EQ31.high.value = eqhigt1.value 
+	  var txt = document.getElementById("peqhigh1").innerHTML =eqhigt1.value   + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+    
     }
   });
 }
@@ -559,20 +590,25 @@ function changeEq2()
   eqlow2.addEventListener("input", function () 
   {
     {   
-	console.log(eqlow2.value)
-      EQ32.low.value = eqlow2.value    
+      EQ32.low.value = eqlow2.value  
+	  var txt = document.getElementById("peqlow2").innerHTML =eqlow2.value  + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+    	  	  
     }
   });
   eqmid2.addEventListener("input", function () 
   {
     {   
       EQ32.mid.value = eqmid2.value
+	  var txt = document.getElementById("peqmid2").innerHTML =eqmid2.value  + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
+    
     }
   });
   eqhigt2.addEventListener("input", function () 
   {
     {   
       EQ32.high.value = eqhigt2.value 
+
+	  var txt = document.getElementById("peqhigh2").innerHTML =eqhigt2.value   + "dB"//'<img class = "display1" src=client/images/chorus.png height="30px" width="30px"/><input type="range" min="0" max="50" value="0" class="slider" id="chorus1">' + chorus1.value
     }
   });
 }
