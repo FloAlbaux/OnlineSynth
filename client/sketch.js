@@ -18,9 +18,13 @@ var Pan2, Chorus2, Distortion2, Pingp2, Vibrato2, EQ32, Vol2;
 var Pan3, Chorus3, Distortion3, Pingp3, Vibrato3, EQ33, Vol3;*/
 
 var note;
+var Recorder, caseRecord=0, fileRecord;
 
 function setup() 
 {
+  Recorder   = new p5.SoundRecorder();
+  fileRecord = new p5.SoundFile();
+
   //Initialize Tone.js synthetizer
   drum = loadSound("client/audio/midDrum.mp3");
   //
@@ -73,6 +77,9 @@ function setup()
   /**********************************************************/
   /**************************BOUTON**************************/
   /**********************************************************/
+  buttonRecord = document.getElementById('record');
+  buttonRecord.addEventListener('click', buttonRecordClik)
+
   buttonSine1     =  document.getElementById('sine1');
   buttonSquare1   =  document.getElementById('square1');
   buttonTriangle1 =  document.getElementById('triangle1');
@@ -162,6 +169,32 @@ function setup()
   eqmid2.addEventListener    ('mousedown' , changeEq2);
   eqhigt2 =  document.getElementById('eqhigh1');
   eqhigt2.addEventListener    ('mousedown' , changeEq2);
+}
+
+function buttonRecordClik()
+{
+  switch (caseRecord)
+  {
+    case 0 :
+      console.log("ca record")
+      Recorder.record(fileRecord);
+      buttonRecord.style.background = "url(client/images/blink.gif)";
+      caseRecord++;
+    break;
+    case 1:
+      console.log("tu peux dl")
+      Recorder.stop();
+      buttonRecord.style.background = "url(client/images/dl.png)";
+      caseRecord++; 
+    break;
+    case 2:
+      console.log("tu nommes le bail")
+      name = prompt ('name of the file')
+      save(fileRecord, name+'.mp3');
+      buttonRecord.style.background = "url(client/images/buttonRed.png)";
+      caseRecord=0; 
+    break;
+  }
 }
 
 function change2Sine1()

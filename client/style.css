@@ -70,7 +70,7 @@ input[type=range]::-webkit-slider-runnable-track {
   width: 50%;
   height: 10px;
   cursor: pointer;
-  animate: 0.2s;
+  animation: 0.2s;
   box-shadow: 1px 1px 1px #000000;
   background: linear-gradient(135deg, blue, red);
   border-radius: 5px;
@@ -146,9 +146,6 @@ input[type=range]:focus::-ms-fill-upper {
   background: #3071A9;
 }
 
-
-
-
 .linear-gradient {
   background:
     linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
@@ -174,7 +171,6 @@ input[type=range]:focus::-ms-fill-upper {
     margin-right: auto }
 .h1
 {
-<<<<<<< Updated upstream
    text-align: center;
    margin-top: 0px;
    font-style: italic;
@@ -182,7 +178,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .btplay2
 {
-  backgroundsize: 100%;
+  background-size: 100%;
   width: 0%;
   height: 0px;
   opacity: 0;
@@ -192,7 +188,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 .btplay1
 {
-  backgroundsize: 100%;
+  background-size: 100%;
   width: 0%;
   height: 0px;
   opacity: 0;
@@ -201,7 +197,11 @@ input[type=range]:focus::-ms-fill-upper {
      
      left: -2 px;
 }
-=======
-     background-color: green;
+
+.record
+{
+  background-image: url("images/buttonRed.png");
+  background-size: 100%;
+  width: 100px;
+  height: 70px;
 }
->>>>>>> Stashed changes

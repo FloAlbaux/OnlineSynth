@@ -7,7 +7,7 @@
     <body 
       style="background-color: white;">  
 </body>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="client/style.css">
 </head>
   
 <body>
@@ -163,10 +163,10 @@
   <div class = "channelConf"> 
     <div class = "playM">
       <button class="bpplayM">play</button>
-      <input type="range" min="0" max="75" value="0" class="slider" id="vol">
+      <input type="range" min="0" max="200" value="100" class="slider" id="svol3">
     </div>
     <div class = "record">
-      <button class="record">Record</button>
+      <button class="record", id="record">Record</button>
     </div>
     <div class = "Download">
       <button class="dl">Download</button>
@@ -175,62 +175,62 @@
 </div>
 
 <div>
-<ul id="piano">
-  <li data-note="C4" class="key">
-    <div data-note="C#4" class="black-key">R</div>
-    D
-  </li>
-  <li data-note="D4" class="key">
-    <div data-note="D#4" class="black-key">T</div>
-    F
-  </li>
-  <li data-note="E4" class="key">
-    G
-  </li>
-  <li data-note="F4" class="key">
-    <div data-note="F#4" class="black-key">U</div>
-    H
-  </li>
-  <li data-note="G4" class="key">
-    <div data-note="G#4" class="black-key">I</div>
-    J
-  </li>
-  <li data-note="A4" class="key">
-    <div data-note="A#4" class="black-key">O</div>
-    K
-  </li>
-  <li data-note="B4" class="key">
-    L
-  </li>
-  <li data-note="C5" class="key">
-    <div data-note="C#5" class="black-key"></div>
-    W
-  </li>
-  <li data-note="D5" class="key">
-    <div data-note="D#5" class="black-key"></div>
-    X
-  </li>
-  <li data-note="E5" class="key">
-    C
-  </li>
-  <li data-note="F5" class="key">
-    <div data-note="F#5" class="black-key"></div>
-    V
-  </li>
-  <li data-note="G5" class="key">
-    <div data-note="G#5" class="black-key"></div>
-    B
-  </li>
-  <li data-note="A5" class="key">
-    <div data-note="A#5" class="black-key"></div>
-    N
-  </li>
-  <li data-note="B5" class="key">
-    
-  </li>  
-</ul>
-
-</div>
+  <ul id="piano">
+    <li data-note="C4" class="key">
+      <div data-note="C#4" class="black-key">é</div>
+      A
+    </li>
+    <li data-note="D4" class="key">
+      <div data-note="D#4" class="black-key">"</div>
+      Z
+    </li>
+    <li data-note="E4" class="key">
+      E
+    </li>
+    <li data-note="F4" class="key">
+      <div data-note="F#4" class="black-key">(</div>
+      R
+    </li>
+    <li data-note="G4" class="key">
+      <div data-note="G#4" class="black-key">-</div>
+      T
+    </li>
+    <li data-note="A4" class="key">
+      <div data-note="A#4" class="black-key">è</div>
+      Y
+    </li>
+    <li data-note="B4" class="key">
+      U
+    </li>
+    <li data-note="C5" class="key">
+      <div data-note="C#5" class="black-key">S</div>
+      W
+    </li>
+    <li data-note="D5" class="key">
+      <div data-note="D#5" class="black-key">D</div>
+      X
+    </li>
+    <li data-note="E5" class="key">
+      C
+    </li>
+    <li data-note="F5" class="key">
+      <div data-note="F#5" class="black-key">G</div>
+      V
+    </li>
+    <li data-note="G5" class="key">
+      <div data-note="G#5" class="black-key">H</div>
+      B
+    </li>
+    <li data-note="A5" class="key">
+      <div data-note="A#5" class="black-key">J</div>
+      N
+    </li>
+    <li data-note="B5" class="key">
+      ,
+    </li>  
+  </ul>
+  
+  </div>
 
 <script type="text/javascript" src="https://unpkg.com/tone"></script>
 <script language="javascript" type="text/javascript" src="client/libraries/p5.js"></script>
